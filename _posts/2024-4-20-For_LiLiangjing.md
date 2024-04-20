@@ -15,5 +15,3 @@ author: Apple
 我发到网上，你行不行啊
 
 **有没有实力啊**
-
-![alt text](v2-c31e380fe50fac641929c50199b473d2_xll~1-1.png)
