@@ -2,7 +2,7 @@
 layout: post
 title: "李亮璟的审判"
 date:   2024-4-20
-tags: [tag1]
+tags: [给朋友的信]
 comments: true
 author: Apple
 ---
