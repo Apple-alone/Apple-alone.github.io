@@ -266,29 +266,29 @@
     vertical-align: middle;
   }
   
-  
+  /*
   .markdown-body hr {
     border-bottom-color: #eee;
   }
-  
-   variables 
-   functions & mixins 
-   variables - calculated 
-   styles 
+  */
+  /* variables */
+  /* functions & mixins */
+  /* variables - calculated */
+  /* styles */
   .gt-container {
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
     font-size: $base-font-size;
-   loader 
-   error 
-   initing 
-   no int 
-   link 
-   meta 
-   popup 
-   header 
-   comments 
-   comment 
+  /* loader */
+  /* error */
+  /* initing */
+  /* no int */
+  /* link */
+  /* meta */
+  /* popup */
+  /* header */
+  /* comments */
+  /* comment */
   }
   .gt-container * {
     -webkit-box-sizing: border-box;
@@ -301,7 +301,7 @@
     color: $link-lighten-color;
   }
   
-  
+  /*
   .gt-container a.is--active {
     color: #333;
     cursor: default !important;
@@ -309,7 +309,7 @@
   .gt-container a.is--active:hover {
     color: #333;
   }
-
+  */
   .gt-container .hide {
     display: none !important;
   }
@@ -473,10 +473,10 @@
     text-align: center;
   }
   
-  
+  /*
   .gt-container .gt-link {
     border-bottom: 1px dotted $link-color;
-  }
+  }*/
   .gt-container .gt-link-counts,
   .gt-container .gt-link-project {
     text-decoration: none;
@@ -725,10 +725,10 @@
     text-decoration: none;
   }
   
-  
+  /*
   .gt-container .gt-comment-username:hover {
     text-decoration: underline;
-  }
+  }*/
   
   .gt-container .gt-comment-text {
     margin-left: 0.5em;
@@ -759,13 +759,13 @@
     right: 0;
   }
   
-   .gt-container .gt-comment-admin .gt-comment-content {
+  /* .gt-container .gt-comment-admin .gt-comment-content {
     background-color: $background-lighten-color;
   
     & :hover{
       background-color:$background-lightener-color;
     }
-  } 
+  } */
   
   @-webkit-keyframes gt-kf-rotate {
     0% {
