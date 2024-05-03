@@ -1,0 +1,37 @@
+.Button {
+    display: inline-block;
+    border-radius: 20px;
+    background-color: #f4511e;
+    border: none;
+    color: #ffff;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400;
+    padding: 18px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    vertical-align: middle;
+  }
+  .Button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  .Button spanafter {
+    content: ">" ;
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  .Buttonhover span {
+    padding-right: 30px;
+  }
+  .Buttonhover spanafter {
+    opacity: 1;
+    right: 0;
+  }
