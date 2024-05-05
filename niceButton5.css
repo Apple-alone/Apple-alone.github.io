@@ -35,3 +35,7 @@
   opacity: 1;
   right: 0;
 }
+body {
+  display: flex;
+  background: linear-gradient(to right, rgb(229, 138, 154),skyblue);
+}
