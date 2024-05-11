@@ -10,8 +10,6 @@ author: Apple
 
 # 目录
 
-- [Github Pages食用教程](#github-pages食用教程)
-- [目录](#目录)
 - [1. 什么是Github Pages](#1-什么是github-pages)
 - [2. 如何搭建](#2-如何搭建)
   - [2.1. 登录或注册GitHub账号](#21-登录或注册github账号)
