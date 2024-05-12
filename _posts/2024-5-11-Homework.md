@@ -53,7 +53,7 @@ GitHub Pages 专门用于托管静态内容，如 HTML、CSS、JavaScript 文件
 
 借助 GitHub 平台搭建网站，首先就要有一个网站仓库
 
-因为是搭建网站，所有rope name有格式
+因为是搭建网站，所以rope name有格式
 
 rope name是 username.github.io，不能改".gitHub.io"，username（用户名），这个改成自己GitHub的用户名
 
