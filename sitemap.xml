@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://applesaber.dpdns.org/</loc>
+    <lastmod>2100-01-01T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://applesaber.dpdns.org/post/action/</loc>
+    <lastmod>2025-08-15T03:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://applesaber.dpdns.org/friend/</loc>
+    <lastmod>2025-08-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://applesaber.dpdns.org/about/</loc>
+    <lastmod>2025-08-15T00:00:00+08:00</lastmod>
+  </url><url>
+    <loc>https://applesaber.dpdns.org/categories/</loc>
+  </url><url>
+    <loc>https://applesaber.dpdns.org/tags/</loc>
+  </url>
+</urlset>

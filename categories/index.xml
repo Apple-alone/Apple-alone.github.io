@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Applesaber的小窝</title>
+    <link>https://applesaber.dpdns.org/categories/</link>
+    <description>Recent content from Applesaber的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>aotu013@163.com (Applesaber)</managingEditor>
+    <webMaster>aotu013@163.com (Applesaber)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 CC-BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    
+    <atom:link href="https://applesaber.dpdns.org/categories/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+  </channel>
+</rss>

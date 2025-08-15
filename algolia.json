@@ -1,0 +1,7 @@
+[
+  {
+    "objectID": "0b20c7d562f4b8a070204bcc018a7d67ee6dc232",
+    "permalink": "/post/action/",
+    "title": "使用Github Action","content": "\r什么是Github Action\rGitHub Actions 是 GitHub 提供的持续集成和持续（CI/CD）交付平台\n可以自动化构建、测试和部署流程，为编译测试提供了一些方便（比如又大又慢的臭Java）\n其中术语了解一下：\nWorkflow (工作流): 一个可配置的自动化流程，由 YAML 文件定义 Job (作业): 工作流中的一组步骤，在同一个运行器上执行 Step (步骤): 可以运行命令或执行动作的任务单元，这步骤可以是 Shell 命令（RUN） 调用预定义动作（USES） 自定义脚本 Action: 可重复使用的代码单元，可通过 GitHub Marketplace 获取现成动作 Runner (运行器): 执行工作流的服务器，可以是 GitHub 托管的或自托管的 Workflow文件存在仓库的 .github/workflows/ 路径下，文件后缀一般为 .yaml 或 .yml\n文件结构示意\nProject/ ├── .github/ │ └── workflows/ │ ├── ci.yml # 持续集成工作流 │ └── deploy.yml # 部署工作流 └── src/ 创建第一个工作流\r我以一份 .NET C#的项目 来演示\n在仓库中创建 .github/workflows 目录 在该目录下创建 dotnet-desktop.yaml 文件 （文件名随意，后缀必须为 yml 或者 yaml） 添加内容： 添加基本信息 name: .NET Core Desktop on: push: branches: [ \u0026amp;#34;master\u0026amp;#34; ] pull_request: branches: [ \u0026amp;#34;master\u0026amp;#34; ] 解析： 1.工作流名称：\u0026amp;#34;.NET Core Desktop\u0026amp;#34; 2.触发条件：推送到 master 分支或创建针对 master 分支的 PR 时触发 作业配置 jobs: build: strategy: matrix: configuration: [Debug, Release] runs-on: windows-latest env: Solution_Name: your-solution-name # 解决方案名称(.sln) Test_Project_Path: …","date": "15150-08-08 8:00:00",
+    "updated": "15150-08-08 8:00:00"
+  }]

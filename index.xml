@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Applesaber的小窝</title>
+    <link>https://applesaber.dpdns.org/algolia.json</link>
+    <description>Recent content from Applesaber的小窝</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    
+    <managingEditor>aotu013@163.com (Applesaber)</managingEditor>
+    <webMaster>aotu013@163.com (Applesaber)</webMaster>
+    
+    <copyright>本博客所有文章除特别声明外，均采用 CC-BY-NC-SA 许可协议。转载请注明出处！</copyright>
+    
+    <lastBuildDate>Fri, 15 Aug 2025 03:00:00 +0800</lastBuildDate>
+    
+    
+    <atom:link href="https://applesaber.dpdns.org/index.xml" rel="self" type="application/rss&#43;xml" />
+    
+
+    
+    
+
+    <item>
+      <title>使用Github Action</title>
+      <link>https://applesaber.dpdns.org/post/action/</link>
+      <pubDate>Fri, 15 Aug 2025 03:00:00 &#43;0800</pubDate>
+      <author>aotu013@163.com (Applesaber)</author>
+      <guid>https://applesaber.dpdns.org/post/action/</guid>
+      <description>
+        <![CDATA[<h1>使用Github Action</h1><p>作者：Applesaber（aotu013@163.com）</p>
+        
+          <h1 id="什么是github-action">
+<a class="header-anchor" href="#%e4%bb%80%e4%b9%88%e6%98%afgithub-action"></a>
+什么是Github Action
+</h1><p>GitHub Actions 是 GitHub 提供的持续集成和持续（CI/CD）交付平台</p>
+<p>可以自动化构建、测试和部署流程，为编译测试提供了一些方便（比如又大又慢的臭Java）</p>
+        
+        <hr><p>本文2025-08-15首发于<a href='https://applesaber.dpdns.org/'>Applesaber的小窝</a>，最后修改于2025-08-15</p>]]>
+      </description>
+      
+    </item>
+    
+  </channel>
+</rss>
