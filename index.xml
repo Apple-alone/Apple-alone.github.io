@@ -23,20 +23,24 @@
 
     <item>
       <title>如何建立Sega游戏服务器</title>
-      <link>https://applesaber.dpdns.org/post/aquadx-server-bulid/</link>
+      <link>https://applesaber.dpdns.org/post/performai-server-bulid/</link>
       <pubDate>Sat, 23 Aug 2025 04:29:36 &#43;0800</pubDate>
       <author>aotu013@163.com (Applesaber)</author>
-      <guid>https://applesaber.dpdns.org/post/aquadx-server-bulid/</guid>
+      <guid>https://applesaber.dpdns.org/post/performai-server-bulid/</guid>
       <description>
         <![CDATA[<h1>如何建立Sega游戏服务器</h1><p>作者：Applesaber（aotu013@163.com）</p>
         
           <h1 id="前言">
 <a class="header-anchor" href="#%e5%89%8d%e8%a8%80"></a>
 前言
-</h1><p>很多地方都没有这个搭建教程，，根据官方文档说搭建服务器要有一定的技术</p>
-<p>是的你觉得你是电子文盲我的建议就是不用搭建了（x</p>
+</h1><p>很多地方都没有这个搭建教程，搭建服务器要有一定的技术</p>
 <p>目前开源的服务器有 <a href="https://gitea.tendokyu.moe/Hay1tsme/artemis/">ARTEMIS</a> 和 <a href="https://github.com/MewoLab/AquaDX/">AquaDX</a></p>
 <p><em>在这里我分享的文件均不能外传！</em></p>
+<p>在使用请遵循每个服务器的开源协议</p>
+<h1 id="准备环境">
+<a class="header-anchor" href="#%e5%87%86%e5%a4%87%e7%8e%af%e5%a2%83"></a>
+准备环境
+</h1><p>ARTEMiS 服务端支持比较老的游戏版本，AquaDX支持比较新的游戏版本</p>
         
         <hr><p>本文2025-08-23首发于<a href='https://applesaber.dpdns.org/'>Applesaber的小窝</a>，最后修改于2025-08-23</p>]]>
       </description>
