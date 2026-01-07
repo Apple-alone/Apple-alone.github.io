@@ -39,7 +39,7 @@ const adapter = process.env.CF_PAGES ? cloudflarePages() : vercel({ mode: "serve
 export default defineConfig({
     site: 'https://applesaber.site',
     trailingSlash: "always",
-//    adapter: adapter,
+    adapter: adapter,
     integrations: [
         decapCmsOauth({
             decapCMSVersion: "3.3.3",
