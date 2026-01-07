@@ -21,8 +21,12 @@ jobs:
       - name: Create .env file
         run: |
             touch .env
-            echo "${{ secrets.TEST_SECRETS }}" >> .env
-
+            echo "${{ secrets.OAUTH_GITHUB_CLIENT_ID }}" >> .env
+            echo "${{ secrets.OAUTH_GITHUB_CLIENT_SECRET }}" >> .env
+            echo "${{ secrets.PUBLIC_DECAP_CMS_VERSION }}" >> .env
+            echo "${{ secrets.PUBLIC_DECAP_CMS_SRC_URL }}" >> .env
+            echo "${{ secrets.UMAMI_TRACKING_CODE }}" >> .env
+            echo "${{ secrets.UMAMI_API_KEY }}" >> .env
       - name: Checkout your repository using git
         uses: actions/checkout@v5
       - name: Install, build, and upload your site
