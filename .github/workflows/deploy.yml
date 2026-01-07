@@ -18,6 +18,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Create .env file
+        run: |
+            touch .env
+            echo "${{ secrets.TEST_SECRETS }}" >> .env
+
       - name: Checkout your repository using git
         uses: actions/checkout@v5
       - name: Install, build, and upload your site
