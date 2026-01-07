@@ -23,11 +23,11 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v5
         env: 
-          OAUTH_GITHUB_CLIENT_ID: ${{ vars.OAUTH_GITHUB_CLIENT_ID }}
-          OAUTH_GITHUB_CLIENT_SECRET: ${{ vars.OAUTH_GITHUB_CLIENT_SECRET }}
-          PUBLIC_DECAP_CMS_SRC_URL: ${{ vars.PUBLIC_DECAP_CMS_SRC_URL }}
-          PUBLIC_DECAP_CMS_VERSION: ${{ vars.PUBLIC_DECAP_CMS_VERSION }}
-          UMAMI_API_KEY: ${{ vars.UMAMI_API_KEY }}
+          OAUTH_GITHUB_CLIENT_ID: ${{ env.OAUTH_GITHUB_CLIENT_ID }}
+          OAUTH_GITHUB_CLIENT_SECRET: ${{ env.OAUTH_GITHUB_CLIENT_SECRET }}
+          PUBLIC_DECAP_CMS_SRC_URL: ${{ env.PUBLIC_DECAP_CMS_SRC_URL }}
+          PUBLIC_DECAP_CMS_VERSION: ${{ env.PUBLIC_DECAP_CMS_VERSION }}
+          UMAMI_API_KEY: ${{ env.UMAMI_API_KEY }}
           UMAMI_TRACKING_CODE: ${{ vars.UMAMI_TRACKING_CODE }}
         # with:
           # path: . # 存储库中 Astro 项目的根位置。（可选）
