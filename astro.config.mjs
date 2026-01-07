@@ -43,7 +43,7 @@ export default defineConfig({
     integrations: [
         decapCmsOauth({
             decapCMSVersion: "3.3.3",
-            oauthDisabled: false, // Disable it to use oauth, requires .env configuration
+            oauthDisabled: true, // Disable it to use oauth, requires .env configuration
         }),
         tailwind({
             nesting: true,
