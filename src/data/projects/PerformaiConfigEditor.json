@@ -1,0 +1,13 @@
+{
+	"title": "Performai Config Editor",
+	"description": "一个Performai系列音游配置文件可视化编辑器",
+	"image": "",
+	"category": "工具",
+	"techStack": [".NET Desktop"],
+	"status": "in-progress",
+	"sourceCode": "https://github.com/Apple-alone/PerformaiConfigEditor",
+	"startDate": "2025-8-14",
+	"endDate": "",
+	"featured": true,
+	"tags": ["Performai"]
+}
