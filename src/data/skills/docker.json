@@ -1,0 +1,12 @@
+{
+    "name": "Docker",
+    "description": "A platform for developing, shipping, and running applications in lightweight, portable containers.",
+    "icon": "logos:docker-icon",
+    "category": "tools",
+    "level": "intermediate",
+    "experience": {
+    "years": 2,
+    "months": 7
+},
+"color": "#2496ED"
+}

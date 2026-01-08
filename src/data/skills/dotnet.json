@@ -1,0 +1,12 @@
+{
+	"name": ".NET",
+	"description": "A free, cross-platform, open source developer platform for building many different types of applications.",
+	"icon": "logos:dotnet",
+	"category": "Frameworks",
+    "level": "intermediate",
+    "experience": {
+    "years": 4,
+    "months": 0
+    },
+    "color": "#512BD4"
+}
