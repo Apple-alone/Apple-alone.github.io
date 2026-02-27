@@ -12,6 +12,46 @@
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s, gap 0.3s ease;
 }
 
+<<<<<<< HEAD
+=======
+/* 导航链接样式 */
+.nav-link-container {
+    position: relative;
+}
+
+/* 小屏幕时只显示图标 */
+@media (max-width: 1279px) {
+    .nav-link-item {
+        width: 2.75rem; /* 11 * 0.25rem */
+        padding-left: 0;
+        padding-right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-link-text {
+        display: none;
+    }
+
+    .nav-link-icon {
+        margin-left: 0;
+    }
+}
+
+/* 大屏幕时显示图标+文字 */
+@media (min-width: 1280px) {
+    .nav-link-item {
+        padding-left: 0.75rem; /* 3 * 0.25rem */
+        padding-right: 0.75rem;
+    }
+
+    .nav-link-text {
+        display: inline;
+    }
+}
+
+>>>>>>> upstream/main
 /* 按钮区域基础布局样式（避免 flex 子项溢出） */
 .navbar-buttons {
     min-width: 0;
@@ -27,6 +67,7 @@
 }
 
 
+<<<<<<< HEAD
 /* 桌面端半透明模式 - 在有banner时启用 */
 @media (min-width: 1024px) {
     :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semi"] > div {
@@ -245,6 +286,90 @@
         border: 1px solid rgba(0, 0, 0, 0.55) !important;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
     }
+=======
+/* 半透明模式 - 在有banner时启用 */
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semi"] > div {
+    backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+/* 半透明模式 - 在有banner时启用 - 暗色主题 */
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semi"] > div {
+    background: rgba(0, 0, 0, 0.55) !important;
+    border: 1px solid rgba(0, 0, 0, 0.55) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 完全透明模式 - 在有banner时启用 */
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="full"] > div {
+    backdrop-filter: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+/* 完全透明模式 - 在有banner时启用 - 暗色主题 */
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="full"] > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/* 半完全透明模式 - 在有banner时启用 - 默认状态：页面顶部时完全透明 */
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semifull"] > div {
+    backdrop-filter: none !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+/* 半完全透明模式 - 在有banner时启用 - 默认状态：页面顶部时完全透明 - 暗色主题 */
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semifull"] > div {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+/* 半完全透明模式 - 在有banner时启用 - 滚动状态：下滑后变为半透明圆角 */
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semifull"].scrolled > div {
+    backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    border-radius: 0.75rem !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+/* 半完全透明模式 - 在有banner时启用 - 滚动状态：下滑后变为半透明圆角 - 暗色主题 */
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #navbar[data-transparent-mode="semifull"].scrolled > div {
+    background: rgba(0, 0, 0, 0.55) !important;
+    border: 1px solid rgba(0, 0, 0, 0.55) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 二级菜单、主题色、夜间模式菜单、手机端导航在有banner时启用半透明效果 */
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) .dropdown-content,
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #display-setting,
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #nav-menu-panel,
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #translate-panel,
+:is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #search-panel {
+    backdrop-filter: blur(20px) !important;
+    background: rgba(255, 255, 255, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.55) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+}
+/* 二级菜单、主题色、夜间模式菜单、手机端导航在有banner时启用半透明效果 - 暗色主题 */
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) .dropdown-content,
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #display-setting,
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #nav-menu-panel,
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #translate-panel,
+:root.dark :is(#banner-wrapper ~ *, body:has(#banner-wrapper)) #search-panel {
+    background: rgba(0, 0, 0, 0.55) !important;
+    border: 1px solid rgba(0, 0, 0, 0.55) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+>>>>>>> upstream/main
 }
 
 /* 响应式优化 */
@@ -266,18 +391,27 @@
     #navbar .navbar-nav-links {
         position: static;
         left: unset;
+<<<<<<< HEAD
         transform: none;
+=======
+        translate: none;
+>>>>>>> upstream/main
         justify-self: center;
         gap: clamp(0.12rem, 1vw, 0.36rem);
     }
 
     #navbar .navbar-buttons {
         justify-self: end;
+<<<<<<< HEAD
         gap: clamp(0.12rem, 1vw, 0.24rem);
+=======
+        gap: clamp(0.12rem, 1vw, 0.36rem);
+>>>>>>> upstream/main
     }
 }
 
 /* 非大屏桌面端&平板端优化 */
+<<<<<<< HEAD
 @media (min-width: 768px) and (max-width: 1280px) {
     #navbar .navbar-nav-links {
         gap: 0.12rem;
@@ -285,18 +419,35 @@
 
     #navbar .navbar-buttons {
         gap: 0.12rem;
+=======
+@media (min-width: 768px) and (max-width: 1279px) {
+    #navbar .navbar-nav-links {
+        gap: 0.2rem;
+    }
+
+    #navbar .navbar-buttons {
+        gap: 0.2rem;
+>>>>>>> upstream/main
     }
 
     /* 搜索状态下的避让逻辑以防重叠 */
     #navbar.is-searching .navbar-nav-links {
         opacity: 0;
+<<<<<<< HEAD
         transform: scale(0.9);
+=======
+        scale: 0.9;
+>>>>>>> upstream/main
         pointer-events: none;
         visibility: hidden;
     }
 }
 
+<<<<<<< HEAD
 /* 手机端导航栏全宽优化 */
+=======
+/* 手机端导航栏 */
+>>>>>>> upstream/main
 @media (max-width: 768px) {
     #navbar > div {
         max-width: none !important;
@@ -305,6 +456,7 @@
         margin-right: 0 !important;
     }
 }
+<<<<<<< HEAD
 
 /* 小屏手机优化 */
 @media (max-width: 512px) {
@@ -325,19 +477,71 @@
     }
     /* Only size direct button children; do not affect nested buttons inside panels */
     #navbar-buttons > button {
+=======
+/* 手机端导航栏 - 小屏 */
+@media (max-width: 512px) {
+    #navbar > div {
+        border-radius: 0.3rem !important;
+        margin: 0 !important;
+        padding-left: 0.6rem !important;
+        padding-right: 0.6rem !important;
+        max-width: none !important;
+        width: 100% !important;
+    }
+
+    #navbar-buttons {
+        gap: 0.123rem !important;
+    }
+    /* Only size the trigger buttons; do not affect nested buttons inside panels */
+    #navbar-buttons button:not(.float-panel *) {
+>>>>>>> upstream/main
         width: 2.4rem !important;
+        height: 2.4rem !important;
+        padding: 0 !important;
+    }
+<<<<<<< HEAD
+}
+
+/* 超小屏幕优化 - 只显示菜单按钮 */
+=======
+
+    /* home button */
+    #navbar > div > a:first-child {
+        width: 7.2rem !important;
         height: 2.4rem !important;
         padding: 0 !important;
     }
 }
 
-/* 超小屏幕优化 - 只显示菜单按钮 */
+/* 手机端导航栏 - 更小屏 */
+@media (min-width: 333px) and (max-width: 444px) {
+    #navbar-buttons {
+        gap: 0.111rem !important;
+    }
+    /* Only size the trigger buttons; do not affect nested buttons inside panels */
+    #navbar-buttons button:not(.float-panel *) {
+        width: 2.1rem !important;
+        height: 2.1rem !important;
+        padding: 0 !important;
+    }
+
+    /* home button */
+    #navbar > div > a:first-child {
+        width: 6.3rem !important;
+        height: 2.1rem !important;
+        padding: 0 !important;
+    }
+}
+
+/* 手机端导航栏按钮 -超小屏 */
+>>>>>>> upstream/main
 @media (max-width: 333px) {
     #navbar-buttons {
         gap: 0 !important;
         justify-content: flex-end !important;
     }
 
+<<<<<<< HEAD
     #navbar-buttons button:not(#nav-menu-switch),
     #navbar-buttons > *:not(#nav-menu-switch) {
         display: none !important;
@@ -349,6 +553,8 @@
         margin-left: auto !important;
     }
 
+=======
+>>>>>>> upstream/main
     /* Hide home button text (keep icon) */
     #navbar > div > a:first-child > div {
         font-size: 0 !important;

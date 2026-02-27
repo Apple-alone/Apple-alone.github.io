@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import ImageWrapper from "@/components/common/imageWrapper.astro";
 import type { SiteConfig } from "@/types/config";
 
@@ -21,13 +22,42 @@ const getImageSources = () => {
 		mobile: mobile.length > 0 ? mobile : desktop,
 	};
 };
+=======
+import type { SiteConfig } from "@/types/config";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+interface Props {
+    config: SiteConfig["wallpaper"];
+    class?: string;
+}
+
+const { config, class: className  } = Astro.props;
+
+// 获取当前设备类型的图片源
+const getImageSources = () => {
+    const toArray = (src: any) => [src || []].flat();
+    const { src } = config;
+    const isObj = src && typeof src === "object" && !Array.isArray(src);
+    const desktop = toArray(isObj ? (src as any).desktop : src);
+    const mobile = toArray(isObj ? (src as any).mobile : src);
+    return {
+        desktop: desktop.length > 0 ? desktop : mobile,
+        mobile: mobile.length > 0 ? mobile : desktop,
+    };
+}
+>>>>>>> upstream/main
 
 const imageSources = getImageSources();
 
 // 轮播配置
 const carouselConfig = config.carousel;
+<<<<<<< HEAD
 const isCarouselEnabled =
 	imageSources.desktop.length > 1 || imageSources.mobile.length > 1;
+=======
+const isCarouselEnabled = imageSources.desktop.length > 1 || imageSources.mobile.length > 1;
+>>>>>>> upstream/main
 const carouselInterval = carouselConfig?.interval || 5;
 
 // 样式配置
@@ -50,7 +80,11 @@ const blur = config.fullscreen?.blur || 0;
             <ul class="carousel-list h-full w-full">
                 {imageSources.desktop.map((src, index) => (
                     <li class:list={[
+<<<<<<< HEAD
                         "carousel-item desktop-item hidden lg:block absolute inset-0 transition-opacity duration-1200",
+=======
+                        "carousel-item desktop-item hidden md:block absolute inset-0 transition-opacity duration-1200",
+>>>>>>> upstream/main
                         index === 0 ? 'opacity-100' : 'opacity-0',
                         carouselConfig?.kenBurns !== false ? 'ken-burns-enabled' : ''
                     ]}>
@@ -60,12 +94,20 @@ const blur = config.fullscreen?.blur || 0;
                             src={src}
                             position={config.position}
                             style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+<<<<<<< HEAD
+=======
+                            loading={index === 0 ? "eager" : "lazy"}
+>>>>>>> upstream/main
                         />
                     </li>
                 ))}
                 {imageSources.mobile.map((src, index) => (
                     <li class:list={[
+<<<<<<< HEAD
                         "carousel-item mobile-item block lg:hidden absolute inset-0 transition-opacity duration-1200",
+=======
+                        "carousel-item mobile-item block md:hidden absolute inset-0 transition-opacity duration-1200",
+>>>>>>> upstream/main
                         index === 0 ? 'opacity-100' : 'opacity-0',
                         carouselConfig?.kenBurns !== false ? 'ken-burns-enabled' : ''
                     ]}>
@@ -75,6 +117,10 @@ const blur = config.fullscreen?.blur || 0;
                             src={src}
                             position={config.position}
                             style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+<<<<<<< HEAD
+=======
+                            loading={index === 0 ? "eager" : "lazy"}
+>>>>>>> upstream/main
                         />
                     </li>
                 ))}
@@ -84,18 +130,34 @@ const blur = config.fullscreen?.blur || 0;
         <div class="relative h-full w-full">
             <ImageWrapper
                 alt="Mobile wallpaper"
+<<<<<<< HEAD
                 class:list={["block lg:hidden object-cover h-full w-full transition duration-600 opacity-100"]}
                 src={imageSources.mobile[0] || imageSources.desktop[0] || ''}
                 position={config.position}
                 style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+=======
+                class:list={["block md:hidden object-cover h-full w-full transition duration-600 opacity-100"]}
+                src={imageSources.mobile[0] || imageSources.desktop[0] || ''}
+                position={config.position}
+                style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+                loading="eager"
+>>>>>>> upstream/main
             />
             <ImageWrapper
                 id="fullscreen-wallpaper"
                 alt="Desktop wallpaper"
+<<<<<<< HEAD
                 class:list={["hidden lg:block object-cover h-full w-full transition duration-600 opacity-100"]}
                 src={imageSources.desktop[0] || imageSources.mobile[0] || ''}
                 position={config.position}
                 style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+=======
+                class:list={["hidden md:block object-cover h-full w-full transition duration-600 opacity-100"]}
+                src={imageSources.desktop[0] || imageSources.mobile[0] || ''}
+                position={config.position}
+                style={blur > 0 ? `filter: blur(${blur}px);` : undefined}
+                loading="eager"
+>>>>>>> upstream/main
             />
         </div>
     )}
@@ -238,7 +300,11 @@ const blur = config.fullscreen?.blur || 0;
             if (wallpaper) {
                 wallpaper.classList.remove('opacity-0');
             }
+<<<<<<< HEAD
             const mobileWallpaper = document.querySelector('.block.lg\\:hidden[alt="Mobile wallpaper"]');
+=======
+            const mobileWallpaper = document.querySelector('.block.md\\:hidden[alt="Mobile wallpaper"]');
+>>>>>>> upstream/main
             if (mobileWallpaper && !document.getElementById('fullscreen-wallpaper-carousel')) {
                 mobileWallpaper.classList.remove('opacity-0');
                 mobileWallpaper.classList.add('opacity-100');

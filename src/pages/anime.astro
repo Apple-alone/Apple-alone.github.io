@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 
+<<<<<<< HEAD
 import ImageWrapper from "@components/common/imageWrapper.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
@@ -23,10 +24,50 @@ async function fetchSubjectPersons(subjectId: number) {
 		console.error(`Error fetching subject ${subjectId} persons:`, error);
 		return [];
 	}
+=======
+
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { siteConfig } from "@/config";
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+
+
+const pageTitle = LinkPresets[LinkPreset.Anime].name;
+const pageDescription = LinkPresets[LinkPreset.Anime].description;
+
+// Bangumi API配置
+const BANGUMI_USER_ID = siteConfig.bangumi?.userId || "";
+const BANGUMI_API_BASE = "https://api.bgm.tv";
+
+// 检查是否配置了有效的 Bangumi 用户 ID
+const isBangumiConfigured = 
+    BANGUMI_USER_ID && 
+    BANGUMI_USER_ID !== "your-bangumi-id" && 
+    BANGUMI_USER_ID !== "your-user-id";
+
+// 获取单个条目相关人员信息
+async function fetchSubjectPersons(subjectId: number) {
+    if (!isBangumiConfigured) return [];
+    try {
+        const response = await fetch(
+            `${BANGUMI_API_BASE}/v0/subjects/${subjectId}/persons`,
+        );
+        const data = await response.json();
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        console.error(`Error fetching subject ${subjectId} persons:`, error);
+        return [];
+    }
+>>>>>>> upstream/main
 }
 
 // 获取Bangumi收藏列表
 async function fetchBangumiCollection(
+<<<<<<< HEAD
 	userId: string,
 	subjectType: number,
 	type: number,
@@ -64,10 +105,51 @@ async function fetchBangumiCollection(
 		console.error("Error fetching Bangumi data:", error);
 		return null;
 	}
+=======
+    userId: string,
+    subjectType: number,
+    type: number,
+) {
+    if (!isBangumiConfigured) return null;
+    try {
+        let allData: any[] = [];
+        let offset = 0;
+        const limit = 50; // 每页获取的数量
+        let hasMore = true;
+
+        // 循环获取所有数据
+        while (hasMore) {
+            const response = await fetch(
+                `${BANGUMI_API_BASE}/v0/users/${userId}/collections?subject_type=${subjectType}&type=${type}&limit=${limit}&offset=${offset}`,
+            );
+            if (!response.ok) {
+                throw new Error(`Bangumi API error: ${response.status}`);
+            }
+            const data = await response.json();
+
+            // 添加当前页数据到总数据中
+            if (data.data && data.data.length > 0) {
+                allData = [...allData, ...data.data];
+            }
+            if (!data.data || data.data.length < limit) {
+                hasMore = false;
+            } else {
+                offset += limit;
+            }
+            // 防止请求过于频繁
+            await new Promise((resolve) => setTimeout(resolve, 100));
+        }
+        return { data: allData };
+    } catch (error) {
+        console.error("Error fetching Bangumi data:", error);
+        return null;
+    }
+>>>>>>> upstream/main
 }
 
 // 获取Bangumi数据转换为页面所需格式
 async function processBangumiData(data: any, status: string) {
+<<<<<<< HEAD
 	if (!data || !data.data) return [];
 
 	// 为每个条目获取详细信息
@@ -123,6 +205,63 @@ async function processBangumiData(data: any, status: string) {
 		}),
 	);
 	return detailedItems;
+=======
+    if (!data || !data.data) return [];
+
+    // 为每个条目获取详细信息
+    const detailedItems = await Promise.all(
+        data.data.map(async (item: any) => {
+            // 获取相关人员信息
+            const subjectPersons = await fetchSubjectPersons(item.subject_id);
+            // 获取年份信息
+            const year = item.subject?.date || "Unknown";
+            // 获取评分
+            const rating = item.rate ? Number.parseFloat(item.rate.toFixed(1)) : 0;
+            // 获取进度信息
+            const progress = item.ep_status || 0;
+            const totalEpisodes = item.subject?.eps || progress;
+            // 从相关人员中获取制作方信息
+            let studio = "Unknown";
+            if (Array.isArray(subjectPersons)) {
+                // 定义筛选优先级顺序
+                const priorities = ["动画制作", "製作", "制作"];
+                for (const relation of priorities) {
+                    const match = subjectPersons.find(
+                        (person) => person.relation === relation,
+                    );
+                    if (match?.name) {
+                        studio = match.name;
+                        break;
+                    }
+                }
+            }
+
+            return {
+                title: item.subject?.name_cn || item.subject?.name || "Unknown Title",
+                status: status,
+                rating: rating,
+                cover: item.subject?.images?.medium || "/assets/anime/default.webp",
+                description: (
+                    item.subject?.short_summary ||
+                    item.subject?.name_cn ||
+                    ""
+                ).trimStart(),
+                episodes: `${totalEpisodes} episodes`,
+                year: year,
+                genre: item.subject?.tags
+                    ? item.subject.tags.slice(0, 3).map((tag: any) => tag.name)
+                    : ["Unknown"],
+                studio: studio,
+                link: `https://bgm.tv/subject/${item.subject.id}` || "#",
+                progress: progress,
+                totalEpisodes: totalEpisodes,
+                startDate: item.subject?.date || "",
+                endDate: item.subject?.date || "",
+            };
+        }),
+    );
+    return detailedItems;
+>>>>>>> upstream/main
 }
 
 // 获取Bangumi番剧列表
@@ -130,16 +269,25 @@ const watchingData = await fetchBangumiCollection(BANGUMI_USER_ID, 2, 3);
 const completedData = await fetchBangumiCollection(BANGUMI_USER_ID, 2, 2);
 
 const watchingList = watchingData
+<<<<<<< HEAD
 	? await processBangumiData(watchingData, "watching")
 	: [];
 const completedList = completedData
 	? await processBangumiData(completedData, "completed")
 	: [];
+=======
+    ? await processBangumiData(watchingData, "watching")
+    : [];
+const completedList = completedData
+    ? await processBangumiData(completedData, "completed")
+    : [];
+>>>>>>> upstream/main
 
 const animeList = [...watchingList, ...completedList];
 
 // 获取状态的翻译文本和样式
 function getStatusInfo(status: string) {
+<<<<<<< HEAD
 	switch (status) {
 		case "watching":
 			return {
@@ -169,10 +317,42 @@ function getStatusInfo(status: string) {
 				icon: "?",
 			};
 	}
+=======
+    switch (status) {
+        case "watching":
+            return {
+                text: i18n(I18nKey.animeStatusWatching),
+                class:
+                    "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
+                icon: "▶",
+            };
+        case "completed":
+            return {
+                text: i18n(I18nKey.animeStatusCompleted),
+                class:
+                    "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300",
+                icon: "✓",
+            };
+        case "planned":
+            return {
+                text: i18n(I18nKey.animeStatusPlanned),
+                class:
+                    "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300",
+                icon: "⏰",
+            };
+        default:
+            return {
+                text: status,
+                class: "bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300",
+                icon: "?",
+            };
+    }
+>>>>>>> upstream/main
 }
 
 // 计算统计数据
 const stats = {
+<<<<<<< HEAD
 	total: animeList.length,
 	watching: animeList.filter((anime) => anime.status === "watching").length,
 	completed: animeList.filter((anime) => anime.status === "completed").length,
@@ -190,16 +370,44 @@ const stats = {
 <MainGridLayout title={i18n(I18nKey.anime)} description={i18n(I18nKey.animeSubtitle)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full">
+=======
+    total: animeList.length,
+    watching: animeList.filter((anime) => anime.status === "watching").length,
+    completed: animeList.filter((anime) => anime.status === "completed").length,
+    avgRating: (() => {
+        const ratedAnime = animeList.filter((anime) => anime.rating > 0);
+        if (ratedAnime.length === 0) return "0.0";
+        return (
+            ratedAnime.reduce((sum, anime) => sum + anime.rating, 0) /
+            ratedAnime.length
+        ).toFixed(1);
+    })(),
+};
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+>>>>>>> upstream/main
             <!-- 页面标题 -->
             <div class="relative w-full mb-8">
                 <div class="mb-6">
                     <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2">{i18n(I18nKey.animeTitle)}</h1>
+<<<<<<< HEAD
                     <p class="text-black/75 dark:text-white/75">{i18n(I18nKey.animeSubtitle)}</p>
                 </div>
 
                 <!-- 统计卡片 -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4">
+=======
+                    <p class="text-black/75 dark:text-white/75">{pageDescription}</p>
+                </div>
+                <!-- 统计卡片 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4">
+>>>>>>> upstream/main
                         <div class="flex items-center gap-3">
                             <div class="text-2xl">📊</div>
                             <div>
@@ -208,7 +416,11 @@ const stats = {
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4">
+=======
+                    <div class="bg-linear-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg p-4">
+>>>>>>> upstream/main
                         <div class="flex items-center gap-3">
                             <div class="text-2xl">▶️</div>
                             <div>
@@ -217,7 +429,11 @@ const stats = {
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+=======
+                    <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+>>>>>>> upstream/main
                         <div class="flex items-center gap-3">
                             <div class="text-2xl">✅</div>
                             <div>
@@ -226,7 +442,11 @@ const stats = {
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <div class="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
+=======
+                    <div class="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
+>>>>>>> upstream/main
                         <div class="flex items-center gap-3">
                             <div class="text-2xl">⭐</div>
                             <div>
@@ -237,21 +457,32 @@ const stats = {
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
             <!-- 动漫列表 -->
             <div class="mb-8">
                 <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-4">
                     {i18n(I18nKey.animeList)}
                 </h2>
+<<<<<<< HEAD
 
                 {BANGUMI_USER_ID === 'your-user-id' ? (
+=======
+                {!isBangumiConfigured ? (
+>>>>>>> upstream/main
                     <div class="text-center py-12">
                         <div class="text-5xl mb-4">😢</div>
                         <h3 class="text-xl font-medium text-black/80 dark:text-white/80 mb-2">
                             {i18n(I18nKey.animeEmpty)}
                         </h3>
                         <p class="text-black/60 dark:text-white/60">
+<<<<<<< HEAD
                             请在 src/config.ts 文件中设置你的 Bangumi 用户ID
+=======
+                            Please configure your Bangumi account in the config file.
+>>>>>>> upstream/main
                         </p>
                     </div>
                 ) : animeList.length > 0 ? (
@@ -260,16 +491,28 @@ const stats = {
                             const statusInfo = getStatusInfo(anime.status);
                             const progressPercent = anime.totalEpisodes > 0 ? (anime.progress / anime.totalEpisodes) * 100 : 0;
                             return (
+<<<<<<< HEAD
                                 <div class="group relative bg-[var(--card-bg)] border border-[var(--line-divider)] rounded-[var(--radius-large)] overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
                                     <!-- 封面区域 - 竖屏比例 -->
                                     <div class="relative aspect-[2/3] overflow-hidden">
+=======
+                                <div class="group relative bg-(--card-bg) border border-(--line-divider) rounded-(--radius-large) overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+                                    <!-- 封面区域 - 竖屏比例 -->
+                                    <div class="relative aspect-2/3 overflow-hidden">
+>>>>>>> upstream/main
                                         <a href={anime.link} target="_blank" rel="noopener noreferrer" class="block w-full h-full">
                                             <ImageWrapper
                                                 src={anime.cover}
                                                 alt={anime.title}
                                                 class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+<<<<<<< HEAD
                                             />
                                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+=======
+                                                loading="lazy"
+                                            />
+                                            <div class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+>>>>>>> upstream/main
                                                 <div class="absolute inset-0 flex items-center justify-center">
                                                     <div class="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center">
                                                         <svg class="w-6 h-6 text-gray-800 ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -293,9 +536,15 @@ const stats = {
                                         </div>
                                         <!-- 进度条 - 在封面底部 -->
                                         {anime.status === 'watching' && (
+<<<<<<< HEAD
                                             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                                                 <div class="w-full bg-white/20 rounded-full h-1.5 mb-1">
                                                     <div class="bg-gradient-to-r from-emerald-400 to-teal-400 h-1.5 rounded-full transition-all duration-300" style={`width: ${progressPercent}%`}></div>
+=======
+                                            <div class="absolute bottom-0 left-0 right-0 bg-linear-to-t from-black/80 to-transparent p-2">
+                                                <div class="w-full bg-white/20 rounded-full h-1.5 mb-1">
+                                                    <div class="bg-linear-to-r from-emerald-400 to-teal-400 h-1.5 rounded-full transition-all duration-300" style={`width: ${progressPercent}%`}></div>
+>>>>>>> upstream/main
                                                 </div>
                                                 <div class="text-white text-xs font-medium">
                                                     {anime.progress}/{anime.totalEpisodes} ({Math.round(progressPercent)}%)
@@ -319,7 +568,11 @@ const stats = {
                                             </div>
                                             <div class="flex flex-wrap gap-1 mt-2">
                                                 {anime.genre.map(g => (
+<<<<<<< HEAD
                                                     <span class="px-1.5 py-0.5 bg-[var(--btn-regular-bg)] text-black/70 dark:text-white/70 rounded text-xs">{g}</span>
+=======
+                                                    <span class="px-1.5 py-0.5 bg-(--btn-regular-bg) text-black/70 dark:text-white/70 rounded-sm text-xs">{g}</span>
+>>>>>>> upstream/main
                                                 ))}
                                             </div>
                                         </div>
@@ -342,4 +595,8 @@ const stats = {
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
+=======
+</GridLayout>
+>>>>>>> upstream/main

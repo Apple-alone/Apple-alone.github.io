@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -32,17 +33,69 @@ function formatTime(dateString: string): string {
 <MainGridLayout title={i18n(I18nKey.diary)} description="即刻短文">
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-4 py-4 md:px-6 md:py-5 relative w-full">
+=======
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { siteConfig } from "@/config";
+import { sortedMoments } from "@/utils/diary";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+const pageTitle = LinkPresets[LinkPreset.Diary].name;
+const pageDescription = LinkPresets[LinkPreset.Diary].description;
+
+// 时间格式化函数
+function formatTime(dateString: string): string {
+    var TG = 8;
+    if (siteConfig.timeZone >= -12 && siteConfig.timeZone <= 12) TG = siteConfig.timeZone;
+    const timeGap = TG;
+    const now = new Date();
+    const date = new Date(dateString);
+    const diffInMinutes = Math.floor(
+        (now.getTime() + timeGap*60*60*1000 - date.getTime()) / (1000 * 60),
+    );
+    if (diffInMinutes < 60) {
+        return `${diffInMinutes}${i18n(I18nKey.diaryMinutesAgo)}`;
+    }
+    if (diffInMinutes < 1440) {
+        // 24小时
+        const hours = Math.floor(diffInMinutes / 60);
+        return `${hours}${i18n(I18nKey.diaryHoursAgo)}`;
+    }
+    const days = Math.floor(diffInMinutes / 1440);
+    return `${days}${i18n(I18nKey.diaryDaysAgo)}`;
+}
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 py-4 md:px-6 md:py-5 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+>>>>>>> upstream/main
             <div class="relative max-w-4xl">
                 <!-- 页面头部 -->
                 <div class="moments-header mb-6">
                     <div class="header-content">
                         <div class="header-info">
+<<<<<<< HEAD
                             <h1 class="moments-title text-xl md:text-2xl lg:text-3xl font-bold text-90 mb-1">{i18n(I18nKey.diary)}</h1>
                             <p class="moments-subtitle text-sm md:text-base lg:text-lg text-75">{i18n(I18nKey.diarySubtitle)}</p>
                         </div>
                         <div class="header-stats">
                             <div class="stat-item text-center">
                                 <span class="stat-number text-lg md:text-xl lg:text-2xl font-bold text-[var(--primary)]">{sortedMoments.length}</span>
+=======
+                            <h1 class="moments-title text-xl md:text-2xl lg:text-3xl font-bold text-90 mb-1">{pageTitle}</h1>
+                            <p class="moments-subtitle text-sm md:text-base lg:text-lg text-75">{pageDescription}</p>
+                        </div>
+                        <div class="header-stats">
+                            <div class="stat-item text-center">
+                                <span class="stat-number text-lg md:text-xl lg:text-2xl font-bold text-(--primary)">{sortedMoments.length}</span>
+>>>>>>> upstream/main
                                 <span class="stat-label text-xs md:text-sm lg:text-base text-75">{i18n(I18nKey.diaryCount)}</span>
                             </div>
                         </div>
@@ -54,6 +107,7 @@ function formatTime(dateString: string): string {
                     {sortedMoments.map(moment => (
                         <div class="moment-item card-base p-4 md:p-6 lg:p-8 hover:shadow-lg transition-all">
                                 <div class="moment-content">
+<<<<<<< HEAD
                                     <p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-3 md:mb-4">{moment.content}</p>
                                     {moment.images && moment.images.length > 0 && (
                                         <div class="moment-images grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
@@ -64,13 +118,32 @@ function formatTime(dateString: string): string {
                                                         alt={i18n(I18nKey.diaryImage)}
                                                         class="w-full h-full object-cover"
                                                         loading="lazy"
+=======
+                                    {moment.title && (
+                                        <h2 class="moment-title text-base md:text-lg lg:text-xl font-bold text-90 mb-2">{moment.title}</h2>
+                                    )}
+                                    <p class="moment-text text-sm md:text-base lg:text-lg text-90 leading-relaxed mb-3 md:mb-4">{moment.content}</p>
+                                    {moment.images && moment.images.length > 0 && (
+                                        <div class="moment-images flex flex-wrap gap-2 md:gap-3 lg:gap-4 mb-3 md:mb-4">
+                                            {moment.images.map((image, index) => (
+                                                <div class="image-item relative rounded-md overflow-hidden cursor-pointer hover:scale-105 transition max-w-full">
+                                                    <ImageWrapper
+                                                        src={image}
+                                                        basePath={moment.basePath}
+                                                        alt={i18n(I18nKey.diaryImage)}
+                                                        class="w-auto h-auto max-h-[300px] md:max-h-[400px] object-contain rounded-md"
+>>>>>>> upstream/main
                                                     />
                                                 </div>
                                             ))}
                                         </div>
                                     )}
                                 </div>
+<<<<<<< HEAD
                                 <hr class="moment-divider border-t border-[var(--line-divider)] my-3 md:my-4" />
+=======
+                                <hr class="moment-divider border-t border-(--line-divider) my-3 md:my-4" />
+>>>>>>> upstream/main
                                 <div class="moment-footer flex justify-between items-center">
                                     <div class="moment-time flex items-center gap-1.5 text-75 text-xs md:text-sm lg:text-base">
                                         <i class="time-icon text-xs md:text-sm">🕐</i>
@@ -90,7 +163,11 @@ function formatTime(dateString: string): string {
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
+=======
+</GridLayout>
+>>>>>>> upstream/main
 
 <style>
     .card-base {
@@ -134,11 +211,19 @@ function formatTime(dateString: string): string {
     }
 
     .image-item img {
+<<<<<<< HEAD
         transition: transform 0.3s ease;
     }
 
     .image-item:hover img {
         transform: scale(1.05);
+=======
+        transition: scale 0.3s ease;
+    }
+
+    .image-item:hover img {
+        scale: 1.05;
+>>>>>>> upstream/main
     }
 
     .action-btn {
@@ -159,8 +244,13 @@ function formatTime(dateString: string): string {
 
     /* 响应式设计 */
 
+<<<<<<< HEAD
     /* 桌面端 (大于1024px) */
     @media (min-width: 1025px) {
+=======
+    /* 桌面端 (大于1280px) */
+    @media (min-width: 1280px) {
+>>>>>>> upstream/main
         .moments-header {
             padding: 1.5rem;
         }
@@ -181,8 +271,13 @@ function formatTime(dateString: string): string {
         }
     }
 
+<<<<<<< HEAD
     /* 平板竖屏 (769px - 1024px) - 优化显示 */
     @media (min-width: 769px) and (max-width: 1024px) {
+=======
+    /* 平板竖屏 (768px - 1279px) - 优化显示 */
+    @media (min-width: 768px) and (max-width: 1279px) {
+>>>>>>> upstream/main
         .moments-header {
             padding: 1.25rem;
         }

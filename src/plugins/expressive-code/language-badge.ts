@@ -3,6 +3,7 @@
  */
 import { definePlugin } from "@expressive-code/core";
 
+<<<<<<< HEAD
 export function pluginLanguageBadge() {
 	return definePlugin({
 		name: "Language Badge",
@@ -15,6 +16,21 @@ export function pluginLanguageBadge() {
 			},
 		},
 		baseStyles: ({}) => `
+=======
+
+export function pluginLanguageBadge() {
+    return definePlugin({
+        name: "Language Badge",
+        hooks: {
+            postprocessRenderedBlock: ({ codeBlock, renderData }) => {
+                const language = codeBlock.language;
+                if (language && renderData.blockAst.properties) {
+                    renderData.blockAst.properties["data-language"] = language;
+                }
+            },
+        },
+        baseStyles: ({}) => `
+>>>>>>> upstream/main
             .frame[data-language]:not(.has-title):not(.is-terminal) {
                 position: relative;
                 
@@ -47,5 +63,10 @@ export function pluginLanguageBadge() {
                 }
             }
         `,
+<<<<<<< HEAD
 	});
 }
+=======
+    });
+}
+>>>>>>> upstream/main

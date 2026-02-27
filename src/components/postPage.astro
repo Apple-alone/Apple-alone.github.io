@@ -1,18 +1,29 @@
 ---
 import type { CollectionEntry } from "astro:content";
+<<<<<<< HEAD
 import PostCard from "@components/post/postCard.astro";
 import { getPostUrl } from "@utils/url-utils";
+=======
+
+import PostCard from "@components/post/postCard.astro";
+
+>>>>>>> upstream/main
 
 const { page } = Astro.props;
 
 let delay = 0;
+<<<<<<< HEAD
 const interval = 50;
+=======
+const interval = 30;
+>>>>>>> upstream/main
 ---
 
 <div class="transition flex flex-col gap-3 py-1 md:py-0 md:gap-4 mb-4">
     {page.data.map((entry: CollectionEntry<"posts">) => (
         <PostCard
             entry={entry}
+<<<<<<< HEAD
             title={entry.data.title}
             tags={entry.data.tags}
             category={entry.data.category}
@@ -24,6 +35,9 @@ const interval = 50;
             draft={entry.data.draft}
             pinned={entry.data.pinned}
             class:list="onload-animation"
+=======
+            class:list="onload-animation-up"
+>>>>>>> upstream/main
             style={`animation-delay: ${delay++ * interval}ms;`}
         ></PostCard>
     ))}

@@ -1,6 +1,7 @@
 ---
 export const prerender = true;
 
+<<<<<<< HEAD
 import IconifyLoader from "@components/common/iconifyLoader.astro";
 import SkillCard from "@components/data/skillCard.astro";
 import { UNCATEGORIZED } from "@constants/constants";
@@ -16,6 +17,29 @@ import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
 
 const { lang } = Astro.props;
+=======
+
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { UNCATEGORIZED } from "@constants/constants";
+import {
+    getAdvancedSkills,
+    getSkillStats,
+    getSkillsByCategory,
+    getTotalExperience,
+    skillsData,
+} from "@utils/skills";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import IconifyLoader from "@components/common/iconifyLoader.astro";
+import SkillCard from "@components/data/skillCard.astro";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+
+
+const title = LinkPresets[LinkPreset.Skills].name;
+const subtitle = LinkPresets[LinkPreset.Skills].description;
+>>>>>>> upstream/main
 
 // 获取技能统计信息
 const stats = getSkillStats();
@@ -27,6 +51,7 @@ const categories = [...new Set(skillsData.map((skill) => skill.category))];
 
 // 按分类获取技能
 const skillsByCategory = categories.reduce(
+<<<<<<< HEAD
 	(acc, category) => {
 		acc[category] = getSkillsByCategory(category);
 		return acc;
@@ -95,15 +120,59 @@ const getCategoryText = (category: string) => {
 const title = i18n(I18nKey.skills);
 const subtitle = i18n(I18nKey.skillsSubtitle);
 
+=======
+    (acc, category) => {
+        acc[category] = getSkillsByCategory(category);
+        return acc;
+    },
+    {} as Record<string, typeof skillsData>,
+);
+
+// 获取分类的翻译文本
+const getCategoryText = (category: string) => {
+    switch (category) {
+        case "ai":
+            return i18n(I18nKey.skillsAI);
+        case "server":
+            return i18n(I18nKey.skillsBackend);
+        case "client":
+            return i18n(I18nKey.skillsClient);
+        case "web":
+            return i18n(I18nKey.skillsFrontend);
+        case "database":
+            return i18n(I18nKey.skillsDatabase);
+        case "engines":
+            return i18n(I18nKey.skillsEngines);
+        case "tools":
+            return i18n(I18nKey.skillsTools);
+        case "others":
+            return i18n(I18nKey.skillsOthers);
+        case UNCATEGORIZED:
+            return i18n(I18nKey.uncategorized);
+        default:
+            return category;
+    }
+};
+
+>>>>>>> upstream/main
 // 收集所有技能图标用于预加载
 const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
 ---
 
+<<<<<<< HEAD
 <MainGridLayout title={title} description={subtitle}>
     <!-- 图标加载器，预加载所有技能图标 -->
     <IconifyLoader preloadIcons={allIcons} />
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full">
+=======
+<GridLayout title={title} description={subtitle}>
+    <!-- 图标加载器，预加载所有技能图标 -->
+    <IconifyLoader preloadIcons={allIcons} />
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+>>>>>>> upstream/main
             <!-- 页面标题 -->
             <div class="flex flex-col items-start justify-center mb-8">
                 <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2">
@@ -116,6 +185,7 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
 
             <!-- 统计信息 -->
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+<<<<<<< HEAD
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.total}</div>
                     <div class="text-sm text-blue-600/70 dark:text-blue-400/70">{i18n(I18nKey.skillsTotal)}</div>
@@ -129,6 +199,21 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
                     <div class="text-sm text-orange-600/70 dark:text-orange-400/70">{i18n(I18nKey.skillsAdvanced)}</div>
                 </div>
                 <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+=======
+                <div class="bg-linear-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.total}</div>
+                    <div class="text-sm text-blue-600/70 dark:text-blue-400/70">{i18n(I18nKey.skillsTotal)}</div>
+                </div>
+                <div class="bg-linear-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-red-600 dark:text-red-400">{stats.byLevel.expert}</div>
+                    <div class="text-sm text-red-600/70 dark:text-red-400/70">{i18n(I18nKey.skillsExpert)}</div>
+                </div>
+                <div class="bg-linear-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
+                    <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.byLevel.advanced}</div>
+                    <div class="text-sm text-orange-600/70 dark:text-orange-400/70">{i18n(I18nKey.skillsAdvanced)}</div>
+                </div>
+                <div class="bg-linear-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
+>>>>>>> upstream/main
                     <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
                         {totalExperience.years}{totalExperience.months > 0 ? `.${totalExperience.months}` : ''}
                     </div>
@@ -247,6 +332,7 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
 
 <style>
@@ -257,6 +343,9 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
         overflow: hidden;
     }
 </style>
+=======
+</GridLayout>
+>>>>>>> upstream/main
 
 <script>
     // 确保图标库已加载，并处理页面导航
