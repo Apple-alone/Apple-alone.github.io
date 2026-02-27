@@ -1,14 +1,4 @@
 ---
-<<<<<<< HEAD
-import { url } from "@utils/url-utils";
-import type { Page } from "astro";
-import { Icon } from "astro-icon/components";
-
-interface Props {
-	page: Page;
-	class?: string;
-	style?: string;
-=======
 import type { Page } from "astro";
 import { Icon } from "astro-icon/components";
 
@@ -19,7 +9,6 @@ interface Props {
     page: Page;
     class?: string;
     style?: string;
->>>>>>> upstream/main
 }
 
 const { page, style } = Astro.props;
@@ -36,19 +25,6 @@ let count = 1;
 let l = page.currentPage;
 let r = page.currentPage;
 while (0 < l - 1 && r + 1 <= page.lastPage && count + 2 <= VISIBLE) {
-<<<<<<< HEAD
-	count += 2;
-	l--;
-	r++;
-}
-while (0 < l - 1 && count < VISIBLE) {
-	count++;
-	l--;
-}
-while (r + 1 <= page.lastPage && count < VISIBLE) {
-	count++;
-	r++;
-=======
     count += 2;
     l--;
     r++;
@@ -60,7 +36,6 @@ while (0 < l - 1 && count < VISIBLE) {
 while (r + 1 <= page.lastPage && count < VISIBLE) {
     count++;
     r++;
->>>>>>> upstream/main
 }
 
 let pages: number[] = [];
@@ -73,42 +48,25 @@ if (r === page.lastPage - 2) pages.push(page.lastPage - 1);
 if (r < page.lastPage) pages.push(page.lastPage);
 
 const getPageUrl = (p: number) => {
-<<<<<<< HEAD
-	if (p === 1) return "/";
-	return `/${p}/`;
-=======
     if (p === 1) return "/";
     return `/${p}/`;
->>>>>>> upstream/main
 };
 ---
 
 <div class:list={[className, "flex flex-row gap-3 justify-center"]} style={style}>
     <a href={page.url.prev || ""} aria-label={page.url.prev ? "Previous Page" : null}
-<<<<<<< HEAD
-       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
-=======
        class:list={["btn-card overflow-hidden rounded-lg text-(--primary) w-11 h-11",
->>>>>>> upstream/main
            {"disabled": page.url.prev == undefined}
        ]}
     >
         <Icon name="material-symbols:chevron-left-rounded" class="text-[1.75rem]"></Icon>
     </a>
-<<<<<<< HEAD
-    <div class="bg-[var(--card-bg)] flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold">
-=======
     <div class="bg-(--card-bg) flex flex-row rounded-lg items-center text-neutral-700 dark:text-neutral-300 font-bold">
->>>>>>> upstream/main
         {pages.map((p) => {
             if (p == HIDDEN)
                 return <Icon name="material-symbols:more-horiz" class="mx-1"/>;
             if (p == page.currentPage)
-<<<<<<< HEAD
-                return <div class="h-11 w-11 rounded-lg bg-[var(--primary)] flex items-center justify-center
-=======
                 return <div class="h-11 w-11 rounded-lg bg-(--primary) flex items-center justify-center
->>>>>>> upstream/main
                     font-bold text-white dark:text-black/70"
                 >
                     {p}
@@ -119,11 +77,7 @@ const getPageUrl = (p: number) => {
         })}
     </div>
     <a href={page.url.next || ""} aria-label={page.url.next ? "Next Page" : null}
-<<<<<<< HEAD
-       class:list={["btn-card overflow-hidden rounded-lg text-[var(--primary)] w-11 h-11",
-=======
        class:list={["btn-card overflow-hidden rounded-lg text-(--primary) w-11 h-11",
->>>>>>> upstream/main
            {"disabled": page.url.next == undefined}
        ]}
     >

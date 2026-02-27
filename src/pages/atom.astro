@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPosts } from "@utils/content-utils";
-import { formatDateToYYYYMMDD } from "@utils/date-utils";
-import { Icon } from "astro-icon/components";
-
-=======
 import { Icon } from "astro-icon/components";
 
 import { getSortedPosts } from "@utils/content";
@@ -17,22 +8,10 @@ import I18nKey from "@i18n/i18nKey";
 import GridLayout from "@layouts/grid.astro";
 
 
->>>>>>> upstream/main
 const posts = (await getSortedPosts()).filter((post) => !post.data.encrypted);
 const recentPosts = posts.slice(0, 6);
 ---
 
-<<<<<<< HEAD
-<MainGridLayout title={i18n(I18nKey.atom)} description={i18n(I18nKey.atomDescription)}>
-    <div class="onload-animation">
-        <!-- Atom 标题和介绍 -->
-        <div class="card-base rounded-[var(--radius-large)] p-8 mb-6">
-            <div class="text-center">
-                <div class="inline-flex items-center justify-center w-16 h-16 bg-[var(--primary)] rounded-2xl mb-4">
-                    <Icon name="material-symbols:rss-feed" class="text-white text-3xl" />
-                </div>
-                <h1 class="text-3xl font-bold text-[var(--primary)] mb-3">{i18n(I18nKey.atom)}</h1>
-=======
 <GridLayout title={i18n(I18nKey.atom)} description={i18n(I18nKey.atomDescription)}>
 
     <div class="onload-animation-up">
@@ -43,24 +22,16 @@ const recentPosts = posts.slice(0, 6);
                     <Icon name="material-symbols:rss-feed" class="text-white text-3xl" />
                 </div>
                 <h1 class="text-3xl font-bold text-(--primary) mb-3">{i18n(I18nKey.atom)}</h1>
->>>>>>> upstream/main
                 <p class="text-75 max-w-2xl mx-auto">
                     {i18n(I18nKey.atomSubtitle)}
                 </p>
             </div>
         </div>
         <!-- Atom 链接复制区域 -->
-<<<<<<< HEAD
-        <div class="card-base rounded-[var(--radius-large)] p-6 mb-6">
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                <div class="flex items-center">
-                    <div class="w-12 h-12 bg-[var(--primary)] rounded-xl flex items-center justify-center mr-4">
-=======
         <div class="card-base rounded-(--radius-large) p-6 mb-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div class="flex items-center">
                     <div class="w-12 h-12 bg-(--primary) rounded-xl flex items-center justify-center mr-4">
->>>>>>> upstream/main
                         <Icon name="material-symbols:link" class="text-white text-xl" />
                     </div>
                     <div>
@@ -69,17 +40,6 @@ const recentPosts = posts.slice(0, 6);
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row gap-3">
-<<<<<<< HEAD
-                    <code class="bg-[var(--card-bg)] px-3 py-2 rounded-lg text-sm font-mono text-75 border border-[var(--line-divider)] break-all">
-                        {Astro.site}atom.xml
-                    </code>
-                    <button 
-                        id="copy-atom-btn"
-                        class="px-4 py-2 bg-[var(--primary)] text-white rounded-lg hover:opacity-80 transition-all duration-200 font-medium text-sm whitespace-nowrap"
-                        data-url={`${Astro.site}atom.xml`}
-                    >
-                        {i18n(I18nKey.atomCopyLink) || "Copy Link"}
-=======
                     <code class="bg-(--card-bg) px-3 py-2 rounded-lg text-sm font-mono text-75 border border-(--line-divider) break-all">
                         {Astro.site}atom.xml
                     </code>
@@ -89,32 +49,20 @@ const recentPosts = posts.slice(0, 6);
                         data-url={`${Astro.site}atom.xml`}
                     >
                         {i18n(I18nKey.atomCopyLink)}
->>>>>>> upstream/main
                     </button>
                 </div>
             </div>
         </div>
         <!-- 最新文章预览 -->
-<<<<<<< HEAD
-        <div class="card-base rounded-[var(--radius-large)] p-6 mb-6">
-            <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
-                <Icon name="material-symbols:article" class="mr-2 text-[var(--primary)]" />
-=======
         <div class="card-base rounded-(--radius-large) p-6 mb-6">
             <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
                 <Icon name="material-symbols:article" class="mr-2 text-(--primary)" />
->>>>>>> upstream/main
                 {i18n(I18nKey.atomLatestPosts)}
             </h2>
             <div class="space-y-4">
                 {recentPosts.map((post) => (
-<<<<<<< HEAD
-                    <article class="bg-[var(--card-bg)] rounded-xl p-4 border border-[var(--line-divider)] hover:border-[var(--primary)] transition-all duration-300">
-                        <h3 class="text-lg font-semibold text-90 mb-2 hover:text-[var(--primary)] transition-colors">
-=======
                     <article class="bg-(--card-bg) rounded-xl p-4 border border-(--line-divider) hover:border-(--primary) transition-all duration-300">
                         <h3 class="text-lg font-semibold text-90 mb-2 hover:text-(--primary) transition-colors">
->>>>>>> upstream/main
                             <a href={`/posts/${post.id}/`} class="hover:underline">
                                 {post.data.title}
                             </a>
@@ -134,15 +82,9 @@ const recentPosts = posts.slice(0, 6);
             </div>
         </div>
         <!-- Atom 说明 -->
-<<<<<<< HEAD
-        <div class="card-base rounded-[var(--radius-large)] p-6">
-            <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
-                <Icon name="material-symbols:help-outline" class="mr-2 text-[var(--primary)]" />
-=======
         <div class="card-base rounded-(--radius-large) p-6">
             <h2 class="text-xl font-bold text-90 mb-4 flex items-center">
                 <Icon name="material-symbols:help-outline" class="mr-2 text-(--primary)" />
->>>>>>> upstream/main
                 {i18n(I18nKey.atomWhatIsAtom)}
             </h2>
             <div class="text-75 space-y-3">
@@ -158,32 +100,6 @@ const recentPosts = posts.slice(0, 6);
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-</MainGridLayout>
-
-<script>
-    // Copy button functionality
-    document.getElementById('copy-atom-btn')?.addEventListener('click', function() {
-        const url = this.getAttribute('data-url');
-        if (url) {
-            navigator.clipboard.writeText(url).then(() => {
-                const originalText = this.textContent || "Copy Link";
-                this.textContent = "Atom link copied to clipboard!";
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 2000);
-            }).catch(err => {
-                console.error('复制失败:', err);
-                const originalText = this.textContent || "Copy Link";
-                this.textContent = "Copy failed, please copy the link manually";
-                setTimeout(() => {
-                    this.textContent = originalText;
-                }, 2000);
-            });
-        }
-    });
-</script>
-=======
 
     <script>
         // Copy button functionality
@@ -216,4 +132,3 @@ const recentPosts = posts.slice(0, 6);
     </script>
 
 </GridLayout>
->>>>>>> upstream/main

@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-:root {
-  --tk-text: black;
-  --code-block-text: #333; /* 调整为深色但在浅色背景下仍然舒适的值 */
-}
-
-html.dark {
-  --tk-text: #d1d5db;
-  --code-block-text: #d1d5db; /* 在深色模式下使用更亮的颜色 */
-}
-
-.tk-comments {
-  @apply text-[var(--tk-text)];
-}
-
-.tk-submit {
-  .tk-avatar {
-    @apply hidden;
-  }
-=======
 @reference "tailwindcss";
 
 :root {
@@ -38,21 +18,10 @@ html.dark {
     .tk-avatar {
         @apply hidden;
     }
->>>>>>> upstream/main
 }
 
 /* Text Area */
 .tk-row {
-<<<<<<< HEAD
-  .tk-col {
-    @apply flex-col-reverse;
-    .tk-input {
-      textarea {
-        @apply rounded-[var(--radius-large)] py-4 px-6 !min-h-[150px] focus:border-[var(--primary)];
-      }
-    }
-  }
-=======
     .tk-col {
         @apply flex-col-reverse;
         .tk-input {
@@ -61,25 +30,10 @@ html.dark {
             }
         }
     }
->>>>>>> upstream/main
 }
 
 /* Meta */
 .tk-meta-input {
-<<<<<<< HEAD
-  @apply relative mt-3;
-  div {
-    @apply min-h-10;
-    .el-input-group__prepend {
-      @apply !bg-inherit rounded-l-lg;
-      min-height: inherit;
-    }
-    input {
-      @apply px-4 rounded-r-lg focus:!border-[var(--primary)];
-      min-height: inherit;
-    }
-  }
-=======
     @apply relative mt-3;
     div {
         @apply min-h-10;
@@ -92,24 +46,10 @@ html.dark {
             min-height: inherit;
         }
     }
->>>>>>> upstream/main
 }
 
 /* Button */
 .tk-row.actions {
-<<<<<<< HEAD
-  @apply w-full !ml-0 !mt-0;
-  .__markdown {
-    @apply !hidden;
-  }
-  .tk-preview,
-  .tk-send,
-  .tk-cancel {
-    @apply border-none rounded-lg px-3 py-0 h-8
-       !bg-[var(--btn-regular-bg-active)] disabled:!bg-[var(--btn-regular-bg)]
-      !text-[var(--btn-content)] disabled:!text-[#ffffffa1];
-  }
-=======
     @apply w-full ml-0! mt-0!;
     .__markdown {
         @apply hidden!;
@@ -121,39 +61,10 @@ html.dark {
              bg-(--btn-regular-bg-active)! disabled:bg-(--btn-regular-bg)!
             text-(--btn-content)! disabled:text-[#ffffffa1]!;
     }
->>>>>>> upstream/main
 }
 
 /* Comment title */
 .tk-comments-title {
-<<<<<<< HEAD
-  .__comments svg {
-    @apply fill-[var(--primary)];
-  }
-}
-
-.tk-comment {
-  @apply border-[1px] border-[rgba(144,147,153,0.31)] p-4 rounded-2xl hover:shadow-md transition-all;
-  .tk-action-icon svg {
-    @apply fill-[var(--primary)];
-  }
-}
-
-.tk-action {
-  .tk-action-count {
-    @apply text-[var(--btn-content)];
-  }
-}
-
-.tk-meta {
-  .tk-tag {
-    @apply border-none rounded-lg text-[var(--btn-content)];
-  }
-
-  .tk-tag-green {
-    @apply bg-[var(--btn-regular-bg)] dark:bg-[var(--primary)] dark:text-[var(--deep-text)];
-  }
-=======
     .__comments svg {
         @apply fill-(--primary);
     }
@@ -180,36 +91,11 @@ html.dark {
     .tk-tag-green {
         @apply bg-(--btn-regular-bg) dark:bg-(--primary) dark:text-(--deep-text);
     }
->>>>>>> upstream/main
 }
 
 /* Content & Preview */
 .tk-content,
 .tk-preview-container {
-<<<<<<< HEAD
-  /* by @microsic
-    Make the picture type emoticons display without wrapping
-  */
-  img {
-    @apply inline !align-bottom;
-  }
-
-  a {
-    @apply underline text-[var(--primary)] font-medium;
-  }
-
-  .tk-ruser {
-    @apply no-underline;
-  }
-
-  :not(pre) > code {
-    @apply bg-[var(--inline-code-bg)] rounded-md text-[--inline-code-color] px-1 py-0.5 font-semibold;
-  }
-
-  li {
-    @apply before:content-["•"] before:text-[var(--primary)];
-  }
-=======
     /* by @microsic
         Make the picture type emoticons display without wrapping
     */
@@ -232,37 +118,10 @@ html.dark {
     li {
         @apply before:content-["•"] before:text-(--primary);
     }
->>>>>>> upstream/main
 }
 
 /* Replies */
 .tk-replies {
-<<<<<<< HEAD
-  .tk-comment {
-    @apply bg-[var(--page-bg)];
-    .tk-content {
-      > span:first-of-type {
-        @apply text-xs;
-      }
-    }
-  }
-}
-
-.twikoo .code-block {
-  pre {
-    @apply !rounded-xl;
-  }
-
-  /* Code block fall back */
-  pre:not([class]) {
-    @apply bg-[var(--codeblock-bg)] overflow-auto p-2 text-[var(--code-block-text)];
-  }
-
-  .copy-btn-icon {
-    width: inherit !important;
-    height: inherit !important;
-  }
-=======
     .tk-comment {
         @apply bg-(--page-bg);
         .tk-content {
@@ -287,21 +146,10 @@ html.dark {
         width: inherit !important;
         height: inherit !important;
     }
->>>>>>> upstream/main
 }
 
 .tk-expand-wrap .tk-expand,
 .tk-collapse-wrap .tk-expand {
-<<<<<<< HEAD
-  @apply hover:rounded-lg mt-1 hover:bg-[var(--btn-plain-bg-hover)];
-}
-
-/* by @SirTamago 
-Make the emoji component display correctly when there are too many emoji packs
-*/
-.card-base {
-  overflow: visible;
-=======
     @apply hover:rounded-lg mt-1 hover:bg-(--btn-plain-bg-hover);
 }
 
@@ -310,7 +158,6 @@ Make the emoji component display correctly when there are too many emoji packs
 */
 .card-base {
     overflow: visible;
->>>>>>> upstream/main
 }
 
 /* 防止 Twikoo 操作时的意外滚动 */
@@ -322,44 +169,24 @@ Make the emoji component display correctly when there are too many emoji packs
 .tk-admin,
 .tk-delete,
 .tk-edit {
-<<<<<<< HEAD
-  cursor: pointer;
-  transition: all 0.2s ease;
-=======
     cursor: pointer;
     transition: all 0.2s ease;
->>>>>>> upstream/main
 }
 
 /* 确保点击区域足够大 */
 .tk-action {
-<<<<<<< HEAD
-  min-height: 24px;
-  display: flex;
-  align-items: center;
-=======
     min-height: 24px;
     display: flex;
     align-items: center;
->>>>>>> upstream/main
 }
 
 /* 防止表单提交时的意外跳转 */
 .tk-submit-wrapper {
-<<<<<<< HEAD
-  position: relative;
-=======
     position: relative;
->>>>>>> upstream/main
 }
 
 /* 管理面板样式优化 */
 .tk-admin-panel {
-<<<<<<< HEAD
-  position: relative;
-  z-index: 100;
-=======
     position: relative;
     z-index: 100;
->>>>>>> upstream/main
 }

@@ -1,35 +1,4 @@
 ---
-<<<<<<< HEAD
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-
-export interface Props {
-	project: {
-		id: string;
-		title: string;
-		description: string;
-		image?: string;
-		category: string;
-		techStack: string[];
-		status: "completed" | "in-progress" | "planned";
-		demoUrl?: string;
-		sourceUrl?: string;
-		startDate: string;
-		endDate?: string;
-		featured?: boolean;
-		tags?: string[];
-	};
-	size?: "small" | "medium" | "large";
-	showImage?: boolean;
-	maxTechStack?: number;
-}
-
-const {
-	project,
-	size = "medium",
-	showImage = true,
-	maxTechStack = 4,
-=======
 import { i18n } from "@i18n/translation";
 import I18nKey from "@i18n/i18nKey";
 import ImageWrapper from "@components/common/imageWrapper.astro";
@@ -62,23 +31,10 @@ const {
     size = "medium",
     showImage = true,
     maxTechStack = 4,
->>>>>>> upstream/main
 } = Astro.props;
 
 // 状态样式映射
 const getStatusStyle = (status: string) => {
-<<<<<<< HEAD
-	switch (status) {
-		case "completed":
-			return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
-		case "in-progress":
-			return "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400";
-		case "planned":
-			return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
-		default:
-			return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
-	}
-=======
     switch (status) {
         case "completed":
             return "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400";
@@ -89,23 +45,10 @@ const getStatusStyle = (status: string) => {
         default:
             return "bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400";
     }
->>>>>>> upstream/main
 };
 
 // 状态文本映射
 const getStatusText = (status: string) => {
-<<<<<<< HEAD
-	switch (status) {
-		case "completed":
-			return i18n(I18nKey.projectsCompleted);
-		case "in-progress":
-			return i18n(I18nKey.projectsInProgress);
-		case "planned":
-			return i18n(I18nKey.projectsPlanned);
-		default:
-			return status;
-	}
-=======
     switch (status) {
         case "completed":
             return i18n(I18nKey.projectsCompleted);
@@ -116,39 +59,10 @@ const getStatusText = (status: string) => {
         default:
             return status;
     }
->>>>>>> upstream/main
 };
 
 // 尺寸样式映射
 const getSizeClasses = (size: string) => {
-<<<<<<< HEAD
-	switch (size) {
-		case "small":
-			return {
-				container: "p-4",
-				title: "text-lg",
-				description: "text-sm line-clamp-2",
-				tech: "text-xs",
-				links: "text-sm",
-			};
-		case "large":
-			return {
-				container: "p-6",
-				title: "text-xl",
-				description: "text-base line-clamp-3",
-				tech: "text-sm",
-				links: "text-base",
-			};
-		default: // medium
-			return {
-				container: "p-5",
-				title: "text-lg",
-				description: "text-sm line-clamp-2",
-				tech: "text-xs",
-				links: "text-sm",
-			};
-	}
-=======
     switch (size) {
         case "small":
             return {
@@ -175,7 +89,6 @@ const getSizeClasses = (size: string) => {
                 links: "text-sm",
             };
     }
->>>>>>> upstream/main
 };
 
 const sizeClasses = getSizeClasses(size);
@@ -184,21 +97,12 @@ const sizeClasses = getSizeClasses(size);
 <div class="bg-white dark:bg-gray-800 rounded-lg border border-black/10 dark:border-white/10 overflow-hidden hover:shadow-lg transition-all duration-300 group">
     <!-- 项目图片 -->
     {showImage && project.image && (
-<<<<<<< HEAD
-        <div class={`overflow-hidden ${size === 'large' ? 'aspect-video' : 'aspect-[4/3]'}`}>
-            <img
-                src={project.image}
-                alt={project.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-=======
         <div class={`overflow-hidden ${size === 'large' ? 'aspect-video' : 'aspect-4/3'}`}>
             <ImageWrapper
                 src={project.image}
                 basePath={project.basePath}
                 alt={project.title}
                 class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
->>>>>>> upstream/main
             />
         </div>
     )}
@@ -216,11 +120,7 @@ const sizeClasses = getSizeClasses(size);
         <!-- 分类标签 -->
         {project.category && (
             <div class="mb-2">
-<<<<<<< HEAD
-                <span class="px-2 py-1 text-xs bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 rounded">
-=======
                 <span class="px-2 py-1 text-xs bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 rounded-sm">
->>>>>>> upstream/main
                     {project.category}
                 </span>
             </div>
@@ -233,20 +133,12 @@ const sizeClasses = getSizeClasses(size);
         {project.techStack && project.techStack.length > 0 && (
             <div class="flex flex-wrap gap-1 mb-4">
                 {project.techStack.slice(0, maxTechStack).map((tech) => (
-<<<<<<< HEAD
-                    <span class={`px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded ${sizeClasses.tech}`}>
-=======
                     <span class={`px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-300 rounded-sm ${sizeClasses.tech}`}>
->>>>>>> upstream/main
                         {tech}
                     </span>
                 ))}
                 {project.techStack.length > maxTechStack && (
-<<<<<<< HEAD
-                    <span class={`px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400 rounded ${sizeClasses.tech}`}>
-=======
                     <span class={`px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400 rounded-sm ${sizeClasses.tech}`}>
->>>>>>> upstream/main
                         +{project.techStack.length - maxTechStack}
                     </span>
                 )}
@@ -256,11 +148,7 @@ const sizeClasses = getSizeClasses(size);
         {project.tags && project.tags.length > 0 && (
             <div class="flex flex-wrap gap-1 mb-4">
                 {project.tags.map((tag) => (
-<<<<<<< HEAD
-                    <span class={`px-2 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 rounded ${sizeClasses.tech}`}>
-=======
                     <span class={`px-2 py-1 bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400 rounded-sm ${sizeClasses.tech}`}>
->>>>>>> upstream/main
                         #{tag}
                     </span>
                 ))}
@@ -290,31 +178,4 @@ const sizeClasses = getSizeClasses(size);
             )}
         </div>
     </div>
-<<<<<<< HEAD
 </div>
-
-<style>
-    .line-clamp-1 {
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .line-clamp-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-</style>
-=======
-</div>
->>>>>>> upstream/main

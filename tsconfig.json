@@ -22,10 +22,6 @@
             "@assets/*": ["src/assets/*"],
             "@i18n/*": ["src/i18n/*"],
             "@constants/*": ["src/constants/*"],
-<<<<<<< HEAD
-            "@data/*": ["src/data/*"],
-=======
->>>>>>> upstream/main
             "@utils/*": ["src/utils/*"],
             "@components/*": ["src/components/*"],
             "@pages/*": ["src/pages/*"],
@@ -37,8 +33,4 @@
         "allowImportingTsExtensions": true,
     },
     "include": ["src/**/*"]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> upstream/main

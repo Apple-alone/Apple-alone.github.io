@@ -1,26 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
 
-<<<<<<< HEAD
-import { postConfig } from "@/config";
-import Twikoo from "./twikoo.astro";
-
-interface Props {
-	post: CollectionEntry<"posts">;
-}
-
-const { id } = Astro.props.post;
-
-const path = `/posts/${id}/`;
-
-let commentService = "";
-if (postConfig.comment?.enable && postConfig.comment?.twikoo) {
-	commentService = "twikoo";
-}
----
-
-{postConfig.comment?.enable && (
-=======
 import { getPostUrl } from "@utils/url";
 import { postConfig } from "@/config";
 import Twikoo from "./twikoo.astro";
@@ -41,7 +21,6 @@ if (postConfig.comment?.enable && post.data.comment && postConfig.comment?.twiko
 ---
 
 {postConfig.comment?.enable && post.data.comment && (
->>>>>>> upstream/main
     <div class="card-base p-6 mb-4">
         {commentService === 'twikoo' && <Twikoo path={path} />}
         {commentService === '' && null}

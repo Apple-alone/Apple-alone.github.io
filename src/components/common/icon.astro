@@ -3,25 +3,6 @@
 // 提供加载状态管理和错误处理
 
 export interface Props {
-<<<<<<< HEAD
-	icon: string;
-	class?: string;
-	style?: string;
-	size?: "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
-	color?: string;
-	fallback?: string; // 备用图标或文本
-	loading?: "lazy" | "eager";
-}
-
-const {
-	icon,
-	class: className = "",
-	style = "",
-	size = "md",
-	color,
-	fallback = "●",
-	loading = "lazy",
-=======
     icon: string;
     class?: string;
     style?: string;
@@ -39,26 +20,16 @@ const {
     color,
     fallback = "●",
     loading = "lazy",
->>>>>>> upstream/main
 } = Astro.props;
 
 // 尺寸映射
 const sizeClasses = {
-<<<<<<< HEAD
-	xs: "text-xs",
-	sm: "text-sm",
-	md: "text-base",
-	lg: "text-lg",
-	xl: "text-xl",
-	"2xl": "text-2xl",
-=======
     xs: "text-xs",
     sm: "text-sm",
     md: "text-base",
     lg: "text-lg",
     xl: "text-xl",
     "2xl": "text-2xl",
->>>>>>> upstream/main
 };
 
 const sizeClass = sizeClasses[size] || sizeClasses.md;

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Applesaber Blog
-欢迎来到我的网站 applesaber.site
-=======
 <div align = "center">
 
 # Twilight
@@ -116,4 +112,3 @@ Deploy your blog to any static hosting platform
 - Inspiration - [Yukina](https://github.com/WhitePaper233/yukina) & [Mizuki](https://github.com/matsuzaka-yuki/Mizuki)
 - CMS         - [astro-decap-cms-oauth](https://github.com/dorukgezici/astro-decap-cms-oauth)
 - Translation - [translate](https://gitee.com/mail_osc/translate)
->>>>>>> upstream/main

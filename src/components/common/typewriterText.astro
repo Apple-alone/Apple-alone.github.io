@@ -1,20 +1,5 @@
 ---
 export interface Props {
-<<<<<<< HEAD
-	text: string | string[];
-	speed?: number;
-	deleteSpeed?: number;
-	pauseTime?: number;
-	class?: string;
-}
-
-const {
-	text,
-	speed = 100,
-	deleteSpeed = 50,
-	pauseTime = 2000,
-	class: className = "",
-=======
     text: string | string[];
     speed?: number;
     deleteSpeed?: number;
@@ -28,7 +13,6 @@ const {
     deleteSpeed = 50,
     pauseTime = 2000,
     class: className = "",
->>>>>>> upstream/main
 } = Astro.props;
 const textData = Array.isArray(text) ? JSON.stringify(text) : text;
 ---

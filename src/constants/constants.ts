@@ -1,14 +1,6 @@
 export const PAGE_SIZE = 8;
 
 export const LIGHT_MODE = "light",
-<<<<<<< HEAD
-	DARK_MODE = "dark",
-	SYSTEM_MODE = "system";
-
-export const WALLPAPER_FULLSCREEN = "fullscreen",
-	WALLPAPER_BANNER = "banner",
-	WALLPAPER_NONE = "none";
-=======
     DARK_MODE = "dark",
     SYSTEM_MODE = "system";
 
@@ -18,7 +10,6 @@ export const WALLPAPER_FULLSCREEN = "fullscreen",
 
 // Navbar height (px)
 export const NAVBAR_HEIGHT = 88;
->>>>>>> upstream/main
 
 // Banner height unit (vh)
 export const BANNER_HEIGHT = 30;
@@ -32,8 +23,4 @@ export const MAIN_PANEL_OVERLAPS_BANNER_HEIGHT = 0;
 export const PAGE_WIDTH = 90;
 
 // Category constants
-<<<<<<< HEAD
 export const UNCATEGORIZED = "uncategorized";
-=======
-export const UNCATEGORIZED = "uncategorized";
->>>>>>> upstream/main
