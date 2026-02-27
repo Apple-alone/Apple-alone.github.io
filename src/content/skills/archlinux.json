@@ -1,0 +1,12 @@
+{
+	"name": "Arch Linux",
+	"description": "A lightweight and flexible Linux distribution that tries to Keep It Simple. It uses a rolling release model and provides a minimal base system, allowing users to customize their environment to a high degree.",
+	"icon": "logos:archlinux",
+	"category": "System",
+	"level": "advanced",
+	"experience": {
+		"years": 4,
+		"months": 5
+	},
+	"color": "#1793D1"
+}

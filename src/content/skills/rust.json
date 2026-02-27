@@ -1,0 +1,12 @@
+{
+    "name": "Rust",
+    "description": "A systems programming language focused on safety, speed, and concurrency. It guarantees memory safety without using a garbage collector.",
+    "icon": "logos:rust",
+    "category": "client",
+    "level": "beginner",
+    "experience": {
+    "years": 0,
+    "months": 4
+    },
+    "color": "#000000"
+}

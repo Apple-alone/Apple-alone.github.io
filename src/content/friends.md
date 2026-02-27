@@ -1,18 +1,18 @@
 ---
 
-## How to Apply
+## 想交个朋友？
 
-Please send your website information to: xxx@xxx.com
+请将您的网站信息发送至：aotu013@163.com
 
-Email Subject:
+邮件主题：
 ```
-Request to Add Friend
+友链申请
 ```
 
-Email Content (Template):
+邮件内容（模板）：
 ```
-Site Name: [Your Site Name]
-Site Desc: [Your Site Description]
-Site Link: [Your Site Link]
-Avatar Link: [Your Avatar Link]
+网站名称：[名称]
+网站简介：[描述]
+网站链接：[链接]
+头像链接：[头像]
 ```

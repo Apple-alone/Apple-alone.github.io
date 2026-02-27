@@ -1,0 +1,17 @@
+{
+    "title": "Performai Config Editor",
+    "description": "A tool to config performai game",
+    "image": "https://github.com/user-attachments/assets/79d5b8f2-cfbf-455f-8e87-85247a26a3a4",
+    "category": "Tool",
+    "techStack": [
+        ".NET Desktop"
+    ],
+    "status": "in-progress",
+    "sourceCode": "https://github.com/Apple-alone/PerformaiConfigEditor",
+    "startDate": "2025-10-01",
+    "endDate": "",
+    "featured": true,
+    "tags": [
+        "Performai"
+    ]
+}
