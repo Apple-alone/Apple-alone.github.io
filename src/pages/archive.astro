@@ -1,11 +1,4 @@
 ---
-<<<<<<< HEAD
-import ArchivePanel from "@components/archivePanel.svelte";
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import MainGridLayout from "@layouts/MainGridLayout.astro";
-import { getSortedPostsList } from "@utils/content-utils";
-=======
 import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
 import { getSortedPostsList } from "@utils/content";
@@ -16,16 +9,10 @@ import BackwardButton from "@components/backwardButton.astro";
 
 const pageTitle = LinkPresets[LinkPreset.Archive].name;
 const pageDescription = LinkPresets[LinkPreset.Archive].description;
->>>>>>> upstream/main
 
 const sortedPostsList = await getSortedPostsList();
 ---
 
-<<<<<<< HEAD
-<MainGridLayout title={i18n(I18nKey.archive)}>
-    <ArchivePanel sortedPosts={sortedPostsList} client:only="svelte"></ArchivePanel>
-</MainGridLayout>
-=======
 <GridLayout title={pageTitle} description={pageDescription}>
     <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
@@ -46,4 +33,3 @@ const sortedPostsList = await getSortedPostsList();
         </div>
     </div>
 </GridLayout>
->>>>>>> upstream/main

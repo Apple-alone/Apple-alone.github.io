@@ -2,20 +2,12 @@ import { defineConfig } from "astro/config";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import svelte, { vitePreprocess } from "@astrojs/svelte";
-<<<<<<< HEAD
-import tailwind from "@astrojs/tailwind";
-import swup from "@swup/astro";
-import sitemap from "@astrojs/sitemap";
-import vercel from "@astrojs/vercel";
-import cloudflarePages from "@astrojs/cloudflare";
-=======
 import tailwindcss from "@tailwindcss/vite";
 import swup from "@swup/astro";
 import sitemap from "@astrojs/sitemap";
 import cloudflarePages from "@astrojs/cloudflare";
 import edgeone from "@edgeone/astro";
 import vercel from "@astrojs/vercel";
->>>>>>> upstream/main
 import decapCmsOauth from "astro-decap-cms-oauth";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
@@ -34,10 +26,7 @@ import { pluginCopyButton } from "./src/plugins/expressive-code/copy-button.js";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
-<<<<<<< HEAD
-=======
 import { MusicCardComponent } from "./src/plugins/rehype-component-music-card.mjs";
->>>>>>> upstream/main
 import { rehypeMermaid } from "./src/plugins/rehype-mermaid.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
@@ -45,14 +34,6 @@ import { remarkMermaid } from "./src/plugins/remark-mermaid.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 
 
-<<<<<<< HEAD
-// https://astro.build/config
-// Choose adapter depending on deployment environment
-const adapter = process.env.CF_PAGES ? cloudflarePages() : vercel({ mode: "serverless" });
-
-export default defineConfig({
-    site: 'https://applesaber.site',
-=======
 // Choose adapter depending on deployment environment
 const adapter = process.env.GITHUB_ACTIONS
     ? undefined
@@ -66,35 +47,21 @@ const adapter = process.env.GITHUB_ACTIONS
 export default defineConfig({
     site: siteConfig.siteURL,
     base: "/",
->>>>>>> upstream/main
     trailingSlash: "always",
     adapter: adapter,
     integrations: [
         decapCmsOauth({
-<<<<<<< HEAD
-            decapCMSVersion: "3.3.3",
-            oauthDisabled: true, // Disable it to use oauth, requires .env configuration
-        }),
-        tailwind({
-            nesting: true,
-        }),
-=======
             decapCMSVersion: "3.9.0",
             oauthDisabled: true, // Disable it to use oauth, requires .env configuration
         }),
->>>>>>> upstream/main
         swup({
             theme: false,
             animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
             containers: [
-<<<<<<< HEAD
-                "#main-grid",
-=======
                 "#swup-container",
                 "#left-sidebar",
                 "#right-sidebar",
                 "#middle-sidebar",
->>>>>>> upstream/main
             ],
             cache: true,
             preload: true,
@@ -195,10 +162,7 @@ export default defineConfig({
                 {
                     components: {
                         github: GithubCardComponent,
-<<<<<<< HEAD
-=======
                         music: MusicCardComponent,
->>>>>>> upstream/main
                         note: (x, y) => AdmonitionComponent(x, y, "note"),
                         tip: (x, y) => AdmonitionComponent(x, y, "tip"),
                         important: (x, y) => AdmonitionComponent(x, y, "important"),
@@ -233,10 +197,7 @@ export default defineConfig({
         ],
     },
     vite: {
-<<<<<<< HEAD
-=======
         plugins: [tailwindcss()],
->>>>>>> upstream/main
         build: {
             rollupOptions: {
                 onwarn(warning, warn) {
@@ -252,10 +213,7 @@ export default defineConfig({
             },
         },
     },
-<<<<<<< HEAD
-=======
     build: {
         inlineStylesheets: "always",
     },
->>>>>>> upstream/main
 });

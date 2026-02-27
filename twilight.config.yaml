@@ -378,7 +378,7 @@ musicPlayer:
         # 类型 ("playlist" 歌单 | "song" 单曲)
         type: "playlist"
         # 资源 ID
-        id: "14140068222"
+        id: "2161912966"
     # local 模式专属配置
     local:
         # 播放列表
@@ -387,17 +387,17 @@ musicPlayer:
                 # 序号
                 id: 1
                 # 标题
-                title: ""
+                title: "深海之息"
                 # 作者
-                artist: ""
+                artist: "Youzee Music"
                 # 封面
-                cover: ""
+                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg"
                 # 音乐路径
-                url: ""
+                url: "assets/music/深海之息.m4a"
                 # 歌词路径
-                lrc: ""
+                lrc: "assets/music/深海之息.lrc"
                 # 时长
-                duration: 
+                duration: 146
     # 是否自动播放
     autoplay: true
 

@@ -46,11 +46,7 @@ const content = `---
 title: ${args[0]}
 published: ${getDate()}
 description: ''
-<<<<<<< HEAD
-image: ''
-=======
 cover: ''
->>>>>>> upstream/main
 tags: []
 category: ''
 draft: false 
@@ -60,8 +56,4 @@ lang: ''
 
 fs.writeFileSync(path.join(targetDir, fileName), content)
 
-<<<<<<< HEAD
 console.log(`Post ${fullPath} created`)
-=======
-console.log(`Post ${fullPath} created`)
->>>>>>> upstream/main

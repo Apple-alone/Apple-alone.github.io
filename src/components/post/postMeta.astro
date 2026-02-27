@@ -1,51 +1,4 @@
 ---
-<<<<<<< HEAD
-import I18nKey from "@i18n/i18nKey";
-import { i18n } from "@i18n/translation";
-import { formatDateToYYYYMMDD } from "@utils/date-utils";
-import { getCategoryUrl, getTagUrl } from "@utils/url-utils";
-import { Icon } from "astro-icon/components";
-import { umamiConfig } from "@/config";
-
-// 解析 umami
-const umamiEnabled = umamiConfig.enabled || false;
-const umamiWebsiteId =
-	umamiConfig.scripts.match(/data-website-id="([^"]+)"/)?.[1] || "";
-const umamiApiKey = umamiConfig.apiKey || "";
-const umamiBaseUrl = umamiConfig.baseUrl || "";
-
-export interface Props {
-	published: Date;
-	updated?: Date;
-	category?: string | null;
-	tags?: string[];
-	hideUpdateDate?: boolean;
-	hideTagsForMobile?: boolean;
-	isHome?: boolean;
-	className?: string;
-	slug?: string;
-}
-
-const {
-	published,
-	updated,
-	category,
-	tags,
-	hideUpdateDate,
-	hideTagsForMobile,
-	isHome,
-	className = "",
-	slug,
-} = Astro.props;
----
-
-
-<div class:list={["flex flex-wrap text-neutral-500 dark:text-neutral-400 items-center gap-4 gap-x-4 gap-y-2", className]}>
-    <!-- publish date -->
-    <div class="flex items-center">
-        <div class="meta-icon"
-        >
-=======
 import { Icon } from "astro-icon/components";
 
 import { getCategoryUrl, getTagUrl, url } from "@utils/url";
@@ -95,7 +48,6 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
     <!-- publish date -->
     <div class="flex items-center">
         <div class="meta-icon">
->>>>>>> upstream/main
             <Icon name="material-symbols:calendar-today-outline-rounded" class="text-xl"></Icon>
         </div>
         <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(published)}</span>
@@ -103,12 +55,7 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
     <!-- update date -->
     {!hideUpdateDate && updated && updated.getTime() !== published.getTime() && (
         <div class="flex items-center">
-<<<<<<< HEAD
-            <div class="meta-icon"
-            >
-=======
             <div class="meta-icon">
->>>>>>> upstream/main
                 <Icon name="material-symbols:edit-calendar-outline-rounded" class="text-xl"></Icon>
             </div>
             <span class="text-50 text-sm font-medium">{formatDateToYYYYMMDD(updated)}</span>
@@ -116,18 +63,6 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
     )}
     <!-- categories -->
     <div class="flex items-center">
-<<<<<<< HEAD
-        <div class="meta-icon"
-        >
-            <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
-        </div>
-        <div class="flex flex-row flex-nowrap items-center">
-            <a href={getCategoryUrl(category || null)} aria-label={`View all posts in the ${category} category`}
-               class="link-lg transition text-50 text-sm font-medium
-                            hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-                {category || i18n(I18nKey.uncategorized)}
-            </a>
-=======
         <div class="meta-icon">
             <Icon name="material-symbols:book-2-outline-rounded" class="text-xl"></Icon>
         </div>
@@ -155,32 +90,19 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
                     {i18n(I18nKey.uncategorized)}
                 </a>
             )}
->>>>>>> upstream/main
         </div>
     </div>
     <!-- tags -->
     <div class:list={["items-center", {"flex": !hideTagsForMobile, "hidden md:flex": hideTagsForMobile}]}>
-<<<<<<< HEAD
-        <div class="meta-icon"
-        >
-=======
         <div class="meta-icon">
->>>>>>> upstream/main
             <Icon name="material-symbols:tag-rounded" class="text-xl"></Icon>
         </div>
         <div class="flex flex-row flex-nowrap items-center">
             {(tags && tags.length > 0) && tags.map((tag, i) => (
-<<<<<<< HEAD
-                <div class:list={[{"hidden": i == 0}, "mx-1.5 text-[var(--meta-divider)] text-sm"]}>/</div>
-                <a href={getTagUrl(tag)} aria-label={`View all posts with the ${tag.trim()} tag`}
-                   class="link-lg transition text-50 text-sm font-medium
-                                hover:text-[var(--primary)] dark:hover:text-[var(--primary)] whitespace-nowrap">
-=======
                 <div class:list={[{"hidden": i == 0}, "mx-1.5 text-(--meta-divider) text-sm"]}>/</div>
                 <a href={getTagUrl(tag)} aria-label={`View all posts with the ${tag.trim()} tag`}
                     class="link-lg transition text-50 text-sm font-medium
                                 hover:text-(--primary) dark:hover:text-(--primary) whitespace-nowrap">
->>>>>>> upstream/main
                     {tag.trim()}
                 </a>
             ))}
@@ -188,14 +110,6 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
         </div>
     </div>
     <!-- 访问量（首页不显示，且umami.enabled为true时显示） -->
-<<<<<<< HEAD
-    {!isHome && umamiEnabled && slug && (
-        <div class="flex items-center">
-            <div class="meta-icon">
-                <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
-            </div>
-            <span class="text-50 text-sm font-medium" id="page-views-display">统计加载中...</span>
-=======
     {!isHome && umamiEnabled && finalPostUrl && (
         <div class="flex items-center page-views-container"
             data-page-url={finalPostUrl}
@@ -210,52 +124,10 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
                 <Icon name="material-symbols:visibility-outline-rounded" class="text-xl"></Icon>
             </div>
             <span class="text-50 text-sm font-medium page-views-display">{i18n(I18nKey.statsLoading)}</span>
->>>>>>> upstream/main
         </div>
     )}
 </div>
 
-<<<<<<< HEAD
-<!-- 只有在非首页且启用umami且有slug时才加载脚本 -->
-{!isHome && umamiEnabled && slug && (
-    <script define:vars={{ slug, umamiBaseUrl, umamiApiKey, umamiWebsiteId, umamiConfig }}>
-        // 客户端统计文案生成函数
-        function generateStatsText(pageViews, visitors) {
-            return `浏览量 ${pageViews} · 访客 ${visitors}`;
-        }
-        // 获取访问量统计
-        async function fetchPageViews(isRetry = false) {
-            if (!umamiConfig.enabled) {
-                return;
-            }
-            try {
-                // 构造文章页面的URL路径
-                const pageUrl = `/posts/${slug}/`;
-                // 调用全局工具获取特定页面的 Umami 统计数据
-                const stats = await getUmamiPageStats(umamiBaseUrl, umamiApiKey, umamiWebsiteId, pageUrl);
-                // 从返回的数据中提取页面浏览量和访客数
-                const pageViews = stats.pageviews || 0;
-                const visitors = stats.visitors || 0;
-                // 更新页面上的显示内容
-                const displayElement = document.getElementById('page-views-display');
-                if (displayElement) {
-                    displayElement.textContent = generateStatsText(pageViews, visitors);
-                }
-            } catch (error) {
-                console.error('Error fetching page views:', error);
-                const displayElement = document.getElementById('page-views-display');
-                if (displayElement) {
-                    displayElement.textContent = '统计不可用';
-                }
-            }
-        }
-        // 页面加载完成后获取统计数据
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', fetchPageViews);
-        } else {
-            fetchPageViews();
-        }
-=======
 <!-- 只有在非首页且启用umami且有finalPostUrl时才加载脚本 -->
 {!isHome && umamiEnabled && finalPostUrl && (
     <script>
@@ -307,6 +179,5 @@ const umamiBaseUrl = umamiConfig.baseUrl || "";
         // 页面加载完成后获取统计数据
         fetchPageViews();
         document.addEventListener('astro:page-load', fetchPageViews);
->>>>>>> upstream/main
     </script>
 )}
