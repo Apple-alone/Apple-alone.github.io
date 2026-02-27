@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryList } from "@utils/content-utils";
@@ -7,10 +8,22 @@ import ButtonLink from "@/components/common/buttonLink.astro";
 import WidgetLayout from "./widgetLayout.astro";
 
 const categories = await getCategoryList();
+=======
+import { getCategoryTree, type CategoryTreeItem } from "@utils/content";
+import { widgetManager, getComponentConfig } from "@utils/widget";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import WidgetLayout from "./widgetLayout.astro";
+import CategoryItem from "./categoryItem.astro";
+
+
+const categoriesTree = await getCategoryTree();
+>>>>>>> upstream/main
 
 const COLLAPSED_HEIGHT = "7.5rem";
 
 // 使用统一的组件管理器检查是否应该折叠
+<<<<<<< HEAD
 const categoriesComponent = widgetManager
 	.getConfig()
 	.components.find((c) => c.type === "categories");
@@ -24,16 +37,36 @@ interface Props {
 }
 const className = Astro.props.class;
 const style = Astro.props.style;
+=======
+const categoriesComponent = getComponentConfig("categories");
+const countNodes = (nodes: CategoryTreeItem[]): number =>
+    nodes.reduce((total, node) => total + 1 + countNodes(node.children), 0);
+const totalCategoriesCount = countNodes(categoriesTree);
+const isCollapsed = categoriesComponent ? widgetManager.isCollapsed(categoriesComponent, totalCategoriesCount) : false;
+
+interface Props {
+    class?: string;
+    style?: string;
+    side?: string;
+    depth?: number;
+}
+const { class: className, style, side = "default", depth } = Astro.props;
+>>>>>>> upstream/main
 ---
 
 <WidgetLayout
     name={i18n(I18nKey.categories)}
+<<<<<<< HEAD
     id="categories"
+=======
+    id={`categories-${side}`}
+>>>>>>> upstream/main
     isCollapsed={isCollapsed}
     collapsedHeight={COLLAPSED_HEIGHT}
     class={className}
     style={style}
 >
+<<<<<<< HEAD
     {categories.map((c) =>
         <ButtonLink
             url={c.url}
@@ -43,4 +76,7 @@ const style = Astro.props.style;
             {c.name.trim()}
         </ButtonLink>
     )}
+=======
+    <CategoryItem nodes={categoriesTree} maxDepth={depth} />
+>>>>>>> upstream/main
 </WidgetLayout>

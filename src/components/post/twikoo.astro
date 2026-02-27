@@ -1,6 +1,7 @@
 ---
 import { postConfig } from "@/config";
 
+<<<<<<< HEAD
 interface Props {
 	path: string;
 }
@@ -9,10 +10,22 @@ const config = {
 	...postConfig.comment.twikoo,
 	el: "#tcomment",
 	path: Astro.props.path,
+=======
+
+interface Props {
+    path: string;
+}
+
+const config = {
+    ...postConfig.comment.twikoo,
+    el: "#tcomment",
+    path: Astro.props.path,
+>>>>>>> upstream/main
 };
 ---
 
 <div id="tcomment"></div>
+<<<<<<< HEAD
 <script is:inline src="/scroll-protection.js"></script>
 <script is:inline src="/assets/js/twikoo.all.min.js"></script>
 <script is:inline define:vars={{ config }}>
@@ -22,15 +35,25 @@ const config = {
         return pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
     }
 
+=======
+<script>
+    import "@/plugins/twikoo-scroll-protection";
+</script>
+<script is:inline define:vars={{ config }}>
+>>>>>>> upstream/main
     // 动态创建配置对象
     function createTwikooConfig() {
         return {
             ...config,
+<<<<<<< HEAD
             path: getCurrentPath(),
+=======
+>>>>>>> upstream/main
             el: '#tcomment'
         };
     }
 
+<<<<<<< HEAD
     // 初始化 Twikoo
     function initTwikoo() {
         if (typeof twikoo !== 'undefined') {
@@ -67,11 +90,77 @@ const config = {
                 window.swup.hooks.on('content:replace', function() {
                     setTimeout(initTwikoo, 200);
                 });
+=======
+    // 加载 Twikoo 脚本
+    function loadTwikooScript() {
+        return new Promise((resolve, reject) => {
+            if (typeof twikoo !== 'undefined') {
+                resolve();
+                return;
+            }
+            const script = document.createElement('script');
+            script.src = '/assets/js/twikoo.all.min.js';
+            script.async = true;
+            script.onload = resolve;
+            script.onerror = reject;
+            document.head.appendChild(script);
+        });
+    }
+
+    // 初始化 Twikoo
+    async function initTwikoo() {
+        const commentEl = document.getElementById('tcomment');
+        if (!commentEl) return;
+        try {
+            await loadTwikooScript();
+            if (typeof twikoo !== 'undefined') {
+                commentEl.innerHTML = '';
+                const dynamicConfig = createTwikooConfig();
+                console.log('[Twikoo] 初始化配置:', dynamicConfig);
+                await twikoo.init(dynamicConfig);
+                console.log('[Twikoo] 初始化完成');
+            }
+        } catch (error) {
+            console.error('[Twikoo] 加载或初始化失败:', error);
+        }
+    }
+
+    // 使用 Intersection Observer 延迟加载
+    function setupLazyLoad() {
+        const commentEl = document.getElementById('tcomment');
+        if (!commentEl) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                initTwikoo();
+                observer.disconnect();
+            }
+        }, { rootMargin: '200px' }); // 提前 200px 开始加载
+
+        observer.observe(commentEl);
+    }
+
+    // 页面加载或切换时设置延迟加载
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupLazyLoad);
+    } else {
+        setupLazyLoad();
+    }
+
+    // Swup 页面切换后重新设置
+    if (window.swup && window.swup.hooks) {
+        window.swup.hooks.on('content:replace', setupLazyLoad);
+    } else {
+        document.addEventListener('swup:enable', function() {
+            if (window.swup && window.swup.hooks) {
+                window.swup.hooks.on('content:replace', setupLazyLoad);
+>>>>>>> upstream/main
             }
         });
     }
 
     // 自定义事件监听
+<<<<<<< HEAD
     document.addEventListener('twilight:page:loaded', function() {
         const commentEl = document.getElementById('tcomment');
         if (commentEl) {
@@ -79,4 +168,7 @@ const config = {
             initTwikoo();
         }
     });
+=======
+    document.addEventListener('twilight:page:loaded', setupLazyLoad);
+>>>>>>> upstream/main
 </script>

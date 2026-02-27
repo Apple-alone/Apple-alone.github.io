@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { Icon } from "astro-icon/components";
@@ -10,6 +11,21 @@ const config = announcementConfig;
 interface Props {
 	class?: string;
 	style?: string;
+=======
+import { Icon } from "astro-icon/components";
+
+import { announcementConfig } from "@/config";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import WidgetLayout from "./widgetLayout.astro";
+
+
+const config = announcementConfig;
+
+interface Props {
+    class?: string;
+    style?: string;
+>>>>>>> upstream/main
 }
 const className = Astro.props.class;
 const style = Astro.props.style;
@@ -56,6 +72,7 @@ const style = Astro.props.style;
 
 <script>
     function closeAnnouncement() {
+<<<<<<< HEAD
         // 通过data-id属性找到整个widget-layout元素
         const widgetLayout = document.querySelector('widget-layout[data-id="announcement"]');
         if (widgetLayout) {
@@ -73,5 +90,24 @@ const style = Astro.props.style;
         }
     });
     // 使公告栏函数全局可用
+=======
+        // Find all announcement widgets
+        const widgetLayouts = document.querySelectorAll('widget-layout[data-id^="announcement"]');
+        widgetLayouts.forEach(layout => {
+            (layout as HTMLElement).style.display = 'none';
+        });
+        localStorage.setItem('announcementClosed', 'true');
+    }
+    // Check if closed on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        if (localStorage.getItem('announcementClosed') === 'true') {
+            const widgetLayouts = document.querySelectorAll('widget-layout[data-id^="announcement"]');
+            widgetLayouts.forEach(layout => {
+                (layout as HTMLElement).style.display = 'none';
+            });
+        }
+    });
+    // Make function global
+>>>>>>> upstream/main
     window.closeAnnouncement = closeAnnouncement;
 </script>

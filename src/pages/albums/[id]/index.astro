@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import type { AlbumGroup } from "@data/albums";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
@@ -16,11 +17,33 @@ export const getStaticPaths = async () => {
 
 interface Props {
 	album: AlbumGroup;
+=======
+import type { AlbumGroup } from "@utils/albums";
+import { sortedAlbums } from "@utils/albums";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+export const getStaticPaths = async () => {
+    return sortedAlbums.filter(album => album.visible).map((album) => ({
+        params: { id: album.id },
+        props: { album },
+    }));
+};
+
+
+interface Props {
+    album: AlbumGroup;
+>>>>>>> upstream/main
 }
 
 const { album } = Astro.props;
 
 if (!album) {
+<<<<<<< HEAD
 	return Astro.redirect("/404");
 }
 ---
@@ -40,6 +63,16 @@ if (!album) {
                     {i18n(I18nKey.albumsBackToList)}
                 </a>
             </div>
+=======
+    return Astro.redirect("/404");
+}
+---
+
+<GridLayout title={album.title} description={album.description || album.title}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <BackwardButton href="/albums/" text={i18n(I18nKey.albumsBackToList)} />
+>>>>>>> upstream/main
             <!-- 相册标题信息 -->
             <header class="mb-8">
                 <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
@@ -82,6 +115,7 @@ if (!album) {
             >
                 {album.photos.map((photo, index) => (
                     <figure class="photo-item group relative overflow-hidden rounded-lg">
+<<<<<<< HEAD
                         <a
                             href={photo.src}
                             data-pswp-width={photo.width || 1200}
@@ -96,11 +130,20 @@ if (!album) {
                                 loading="lazy"
                             />
                         </a>
+=======
+                        <ImageWrapper
+                            src={photo.src}
+                            basePath={album.basePath}
+                            alt={photo.alt}
+                            class="photo-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                        />
+>>>>>>> upstream/main
                     </figure>
                 ))}
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
 
 <script>
@@ -129,6 +172,9 @@ if (!album) {
         });
     });
 </script>
+=======
+</GridLayout>
+>>>>>>> upstream/main
 
 <style>
     .grid-layout {
@@ -159,7 +205,11 @@ if (!album) {
         }
     }
 
+<<<<<<< HEAD
     @media (min-width: 1024px) {
+=======
+    @media (min-width: 1280px) {
+>>>>>>> upstream/main
         .masonry-layout[data-columns="4"] {
             columns: 4;
         }

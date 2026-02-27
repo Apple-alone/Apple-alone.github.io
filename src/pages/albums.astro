@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
@@ -18,6 +19,36 @@ const albumsData = await scanAlbums();
                 </h1>
                 <p class="text-neutral-600 dark:text-neutral-400">
                     {i18n(I18nKey.albumsSubtitle)}
+=======
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { sortedAlbums } from "@utils/albums";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+const pageTitle = LinkPresets[LinkPreset.Albums].name;
+const pageDescription = LinkPresets[LinkPreset.Albums].description;
+
+// 获取所有相册
+const albumsData = sortedAlbums.filter(album => album.visible);
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+            <!-- 页面标题 -->
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+                    {pageTitle}
+                </h1>
+                <p class="text-neutral-600 dark:text-neutral-400">
+                    {pageDescription}
+>>>>>>> upstream/main
                 </p>
             </header>
             <!-- 相册网格 -->
@@ -28,17 +59,30 @@ const albumsData = await scanAlbums();
                     >
                         <a href={`/albums/${album.id}/`} class="block">
                             <!-- 封面图片 -->
+<<<<<<< HEAD
                             <div class="aspect-[4/3] overflow-hidden bg-neutral-100 dark:bg-neutral-700">
                                 <img
                                     src={album.cover}
                                     alt={album.title}
                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                     loading="lazy"
+=======
+                            <div class="aspect-4/3 overflow-hidden bg-neutral-100 dark:bg-neutral-700">
+                                <ImageWrapper
+                                    src={album.cover}
+                                    basePath={album.basePath}
+                                    alt={album.title}
+                                    class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+>>>>>>> upstream/main
                                 />
                             </div>
                             <!-- 相册信息 -->
                             <div class="p-4">
+<<<<<<< HEAD
                                 <h3 class="font-bold text-lg text-neutral-900 dark:text-neutral-100 mb-2 group-hover:text-[var(--primary)] transition-colors">
+=======
+                                <h3 class="font-bold text-lg text-neutral-900 dark:text-neutral-100 mb-2 group-hover:text-(--primary) transition-colors">
+>>>>>>> upstream/main
                                     {album.title}
                                 </h3>
                                 {album.description && (
@@ -99,6 +143,7 @@ const albumsData = await scanAlbums();
             )}
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
 
 <style>
@@ -111,16 +156,31 @@ const albumsData = await scanAlbums();
 
     .album-card:hover {
         transform: translateY(-2px);
+=======
+</GridLayout>
+
+<style>
+    .album-card:hover {
+        translate: 0 -2px;
+>>>>>>> upstream/main
     }
 
     @keyframes fadeInUp {
         from {
             opacity: 0;
+<<<<<<< HEAD
             transform: translateY(20px);
         }
         to {
             opacity: 1;
             transform: translateY(0);
+=======
+            translate: 0 20px;
+        }
+        to {
+            opacity: 1;
+            translate: 0 0;
+>>>>>>> upstream/main
         }
     }
 

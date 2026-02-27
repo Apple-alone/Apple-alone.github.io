@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import { BANNER_HEIGHT_EXTEND } from "@constants/constants";
 import ImageWrapper from "@/components/common/imageWrapper.astro";
 import TypewriterText from "@/components/common/typewriterText.astro";
@@ -30,14 +31,47 @@ const getImageSources = () => {
 		mobile: mobile.length > 0 ? mobile : desktop,
 	};
 };
+=======
+import type { SiteConfig } from "@/types/config";
+import { BANNER_HEIGHT_EXTEND } from "@constants/constants";
+import TypewriterText from "@components/common/typewriterText.astro";
+import ImageWrapper from "@components/common/imageWrapper.astro";
+
+
+interface Props {
+    config: SiteConfig["wallpaper"];
+    isHomePage: boolean;
+    class?: string;
+}
+
+const { config, isHomePage, class: className } = Astro.props;
+
+// 获取当前设备类型的图片源
+const getImageSources = () => {
+    const toArray = (src: any) => [src || []].flat();
+    const { src } = config;
+    const isObj = src && typeof src === "object" && !Array.isArray(src);
+    const desktop = toArray(isObj ? (src as any).desktop : src);
+    const mobile = toArray(isObj ? (src as any).mobile : src);
+    return {
+        desktop: desktop.length > 0 ? desktop : mobile,
+        mobile: mobile.length > 0 ? mobile : desktop,
+    };
+}
+>>>>>>> upstream/main
 
 const imageSources = getImageSources();
 
 // 轮播配置
 const carouselConfig = config.carousel;
+<<<<<<< HEAD
 const isCarouselEnabled =
 	imageSources.desktop.length > 1 || imageSources.mobile.length > 1;
 const carouselInterval = carouselConfig?.interval || 6;
+=======
+const isCarouselEnabled = imageSources.desktop.length > 1 || imageSources.mobile.length > 1;
+const carouselInterval = carouselConfig?.interval || 6
+>>>>>>> upstream/main
 
 // 样式配置
 const showHomeText = config.banner?.homeText?.enable && isHomePage;
@@ -49,8 +83,12 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
 <div
     id="banner-wrapper"
     class:list={[
+<<<<<<< HEAD
         "absolute z-10 w-full transition duration-600 overflow-hidden",
         mobileNonHomeBannerClass,
+=======
+        "absolute z-10 w-full transition-all duration-600 overflow-hidden",
+>>>>>>> upstream/main
         className
     ]}
     style={`top: -${BANNER_HEIGHT_EXTEND}vh`}
@@ -60,7 +98,11 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
             <ul class="carousel-list h-full w-full">
                 {imageSources.desktop.map((src, index) => (
                     <li class:list={[
+<<<<<<< HEAD
                         "carousel-item desktop-item hidden lg:block absolute inset-0 transition-opacity duration-1200",
+=======
+                        "carousel-item desktop-item hidden md:block absolute inset-0 transition-opacity duration-1200",
+>>>>>>> upstream/main
                         index === 0 ? 'opacity-100' : 'opacity-0',
                         carouselConfig?.kenBurns !== false ? 'ken-burns-enabled' : ''
                     ]}>
@@ -69,12 +111,20 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
                             class:list={["object-cover h-full w-full"]}
                             src={src}
                             position={config.position}
+<<<<<<< HEAD
+=======
+                            loading={index === 0 ? "eager" : "lazy"}
+>>>>>>> upstream/main
                         />
                     </li>
                 ))}
                 {imageSources.mobile.map((src, index) => (
                     <li class:list={[
+<<<<<<< HEAD
                         "carousel-item mobile-item block lg:hidden absolute inset-0 transition-opacity duration-1200",
+=======
+                        "carousel-item mobile-item block md:hidden absolute inset-0 transition-opacity duration-1200",
+>>>>>>> upstream/main
                         index === 0 ? 'opacity-100' : 'opacity-0',
                         carouselConfig?.kenBurns !== false ? 'ken-burns-enabled' : ''
                     ]}>
@@ -83,6 +133,10 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
                             class:list={["object-cover h-full w-full"]}
                             src={src}
                             position={config.position}
+<<<<<<< HEAD
+=======
+                            loading={index === 0 ? "eager" : "lazy"}
+>>>>>>> upstream/main
                         />
                     </li>
                 ))}
@@ -92,16 +146,30 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
         <div class="relative h-full w-full">
             <ImageWrapper
                 alt="Mobile banner"
+<<<<<<< HEAD
                 class:list={["block lg:hidden object-cover h-full w-full transition duration-600 opacity-100"]}
                 src={imageSources.mobile[0] || imageSources.desktop[0] || ''}
                 position={config.position}
+=======
+                class:list={["block md:hidden object-cover h-full w-full transition duration-600 opacity-100"]}
+                src={imageSources.mobile[0] || imageSources.desktop[0] || ''}
+                position={config.position}
+                loading="eager"
+>>>>>>> upstream/main
             />
             <ImageWrapper
                 id="banner"
                 alt="Desktop banner"
+<<<<<<< HEAD
                 class:list={["hidden lg:block object-cover h-full w-full transition duration-600 opacity-100"]}
                 src={imageSources.desktop[0] || imageSources.mobile[0] || ''}
                 position={config.position}
+=======
+                class:list={["hidden md:block object-cover h-full w-full transition duration-600 opacity-100"]}
+                src={imageSources.desktop[0] || imageSources.mobile[0] || ''}
+                position={config.position}
+                loading="eager"
+>>>>>>> upstream/main
             />
         </div>
     )}
@@ -112,12 +180,20 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
             <div class="w-4/5 lg:w-3/4 text-center mb-0">
                 <div class="flex flex-col">
                     {config.banner?.homeText?.title && (
+<<<<<<< HEAD
                         <h1 class="banner-title text-6xl lg:text-8xl text-white drop-shadow-lg mb-2 lg:mb-4">
+=======
+                        <h1 class="banner-title text-6xl lg:text-8xl text-white mb-2 lg:mb-4">
+>>>>>>> upstream/main
                             {config.banner.homeText.title}
                         </h1>
                     )}
                     {config.banner?.homeText?.subtitle && (
+<<<<<<< HEAD
                         <h2 class="banner-subtitle text-xl lg:text-3xl text-white/90 drop-shadow-md">
+=======
+                        <h2 class="banner-subtitle text-xl lg:text-3xl text-white/90">
+>>>>>>> upstream/main
                             {config.banner.homeText.typewriter?.enable ? (
                                 <TypewriterText
                                     text={config.banner.homeText.subtitle}
@@ -139,14 +215,24 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
 
     <!-- Water waves effect -->
     {showWaves && (
+<<<<<<< HEAD
         <div class="waves-container absolute -bottom-[1px] h-[10vh] max-h-[9.375rem] min-h-[3.125rem] w-full md:h-[15vh]" id="header-waves">
+=======
+        <div class="waves-container absolute -bottom-px h-[10vh] max-h-37.5 min-h-12.5 w-full md:h-[15vh]" id="header-waves">
+>>>>>>> upstream/main
             <svg
                 class="waves"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
+<<<<<<< HEAD
                 viewBox="0 20 150 32"
                 preserveAspectRatio="none"
                 shape-rendering="auto"
+=======
+                viewBox="0 21 150 30"
+                preserveAspectRatio="none"
+                shape-rendering="geometricPrecision"
+>>>>>>> upstream/main
             >
                 <defs>
                     <path
@@ -162,13 +248,21 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
                             xlink:href="#gentle-wave"
                             x="48"
                             y="7"
+<<<<<<< HEAD
                             class="fill-[var(--page-bg)]"
+=======
+                            class="fill-(--page-bg)"
+>>>>>>> upstream/main
                         ></use>
                         <use
                             xlink:href="#gentle-wave"
                             x="48"
                             y="5"
+<<<<<<< HEAD
                             class="opacity-75 fill-[var(--page-bg)]"
+=======
+                            class="opacity-75 fill-(--page-bg)"
+>>>>>>> upstream/main
                         ></use>
                     ) : (
                         // 正常模式：渲染四个波浪层
@@ -177,25 +271,41 @@ const isPerformanceMode = config.banner?.waves?.performanceMode;
                                 xlink:href="#gentle-wave"
                                 x="48"
                                 y="0"
+<<<<<<< HEAD
                                 class="opacity-25 fill-[var(--page-bg)]"
+=======
+                                class="opacity-25 fill-(--page-bg)"
+>>>>>>> upstream/main
                             ></use>
                             <use
                                 xlink:href="#gentle-wave"
                                 x="48"
                                 y="3"
+<<<<<<< HEAD
                                 class="opacity-50 fill-[var(--page-bg)]"
+=======
+                                class="opacity-50 fill-(--page-bg)"
+>>>>>>> upstream/main
                             ></use>
                             <use
                                 xlink:href="#gentle-wave"
                                 x="48"
                                 y="5"
+<<<<<<< HEAD
                                 class="opacity-75 fill-[var(--page-bg)]"
+=======
+                                class="opacity-75 fill-(--page-bg)"
+>>>>>>> upstream/main
                             ></use>
                             <use
                                 xlink:href="#gentle-wave"
                                 x="48"
                                 y="7"
+<<<<<<< HEAD
                                 class="fill-[var(--page-bg)]"
+=======
+                                class="fill-(--page-bg)"
+>>>>>>> upstream/main
                             ></use>
                         </>
                     )}

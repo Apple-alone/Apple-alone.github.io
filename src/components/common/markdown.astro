@@ -2,13 +2,23 @@
 // 只加载基础的等宽字体，减少加载时间
 import "@fontsource-variable/jetbrains-mono";
 
+<<<<<<< HEAD
 interface Props {
 	class: string;
+=======
+
+interface Props {
+    class: string;
+>>>>>>> upstream/main
 }
 const className = Astro.props.class;
 ---
 
+<<<<<<< HEAD
 <div data-pagefind-body class={`prose dark:prose-invert prose-base !max-w-none custom-md ${className}`}>
+=======
+<div data-pagefind-body class={`prose dark:prose-invert prose-base max-w-none! custom-md ${className}`}>
+>>>>>>> upstream/main
     <!--<div class="prose dark:prose-invert max-w-none custom-md">-->
     <!--<div class="max-w-none custom-md">-->
     <slot/>

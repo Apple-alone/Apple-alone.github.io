@@ -1,4 +1,5 @@
 ---
+<<<<<<< HEAD
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import WidgetLayout from "./widgetLayout.astro";
@@ -16,11 +17,36 @@ const { class: className, style, depth = 3 } = Astro.props;
     <div class="toc-scroll-container">
         <table-of-contents class="group" id="toc" data-depth={depth}>
             <!-- TOC内容将由JavaScript动态生成 -->
+=======
+import { NAVBAR_HEIGHT } from "@constants/constants";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
+import WidgetLayout from "./widgetLayout.astro";
+
+
+interface Props {
+    id?: string;
+    class?: string;
+    style?: string;
+    depth?: number;
+    side?: string;
+}
+
+const { id: propId, class: className, style, depth = 3, side = "default" } = Astro.props;
+const id = propId || `toc-wrapper-${side}`;
+---
+
+<WidgetLayout name={i18n(I18nKey.tableOfContents)} id={id} class:list={[className, "toc-wrapper", "toc-hide"]} style={style}>
+    <div class="toc-scroll-container">
+        <table-of-contents class="group" data-depth={depth} data-navbar-height={NAVBAR_HEIGHT}>
+            <div class="toc-inner-content relative"></div>
+>>>>>>> upstream/main
         </table-of-contents>
     </div>
 </WidgetLayout>
 
 <script>
+<<<<<<< HEAD
 class TableOfContents extends HTMLElement {
     tocEl: HTMLElement | null = null;
     visibleClass = "visible";
@@ -353,6 +379,9 @@ class TableOfContents extends HTMLElement {
 if (!customElements.get("table-of-contents")) {
     customElements.define("table-of-contents", TableOfContents);
 }
+=======
+import "./toc";
+>>>>>>> upstream/main
 </script>
 
 <style>
@@ -378,20 +407,41 @@ if (!customElements.get("table-of-contents")) {
         display: block;
     }
 
+<<<<<<< HEAD
     /* 基础过渡样式 */
     :global(widget-layout[data-id="toc-wrapper"]) {
         transition: 
+=======
+    /* 高亮当前项文字 */
+    :global(.toc-inner-content a.visible .text-50),
+    :global(.toc-inner-content a.visible .text-30) {
+        color: var(--primary);
+        font-weight: 500;
+    }
+
+    /* 基础过渡样式 */
+    :global(widget-layout.toc-wrapper) {
+        transition:
+>>>>>>> upstream/main
             max-height 300ms cubic-bezier(0.4, 0, 0.2, 1),
             opacity 300ms cubic-bezier(0.4, 0, 0.2, 1),
             margin-bottom 300ms cubic-bezier(0.4, 0, 0.2, 1),
             padding 300ms cubic-bezier(0.4, 0, 0.2, 1),
             visibility 300ms;
+<<<<<<< HEAD
         max-height: 100vh; /* 足够容纳目录的高度 */
         overflow: hidden;
         display: block; /* 覆盖之前可能的 grid 设置 */
     }
     /* 隐藏状态 */
     :global(widget-layout[data-id="toc-wrapper"].toc-hide) {
+=======
+        max-height: 1200px; /* 足够容纳目录的高度，避免 100vh 可能带来的过长过渡延迟 */
+        overflow: hidden;
+    }
+    /* 隐藏状态 */
+    :global(widget-layout.toc-wrapper.toc-hide) {
+>>>>>>> upstream/main
         max-height: 0;
         opacity: 0;
         margin-bottom: -1rem; /* 抵消父级 flex 的 gap-4 */
@@ -400,6 +450,7 @@ if (!customElements.get("table-of-contents")) {
         visibility: hidden;
         pointer-events: none;
     }
+<<<<<<< HEAD
     /* 显现动画 */
     :global(widget-layout[data-id="toc-wrapper"].animate-show) {
     }
@@ -412,4 +463,6 @@ if (!customElements.get("table-of-contents")) {
         padding-bottom: 0 !important;
         visibility: hidden;
     }
+=======
+>>>>>>> upstream/main
 </style>

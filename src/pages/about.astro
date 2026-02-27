@@ -1,27 +1,57 @@
 ---
 export const prerender = true;
 
+<<<<<<< HEAD
 import { getEntry, render } from "astro:content";
 import Markdown from "@components/common/markdown.astro";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import MainGridLayout from "@layouts/MainGridLayout.astro";
+=======
+
+import { getEntry, render } from "astro:content";
+
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import Markdown from "@components/common/markdown.astro";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+
+
+const pageTitle = LinkPresets[LinkPreset.About].name;
+const pageDescription = LinkPresets[LinkPreset.About].description;
+>>>>>>> upstream/main
 
 const aboutPost = await getEntry("spec", "about");
 
 if (!aboutPost) {
+<<<<<<< HEAD
 	throw new Error("About page content not found");
+=======
+    throw new Error("About page content not found");
+>>>>>>> upstream/main
 }
 
 const { Content } = await render(aboutPost);
 ---
 
+<<<<<<< HEAD
 <MainGridLayout title={i18n(I18nKey.about)} description={i18n(I18nKey.about)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-9 py-6 relative w-full ">
+=======
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-(--radius-large) overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <BackwardButton currentPath={Astro.url.pathname} />
+>>>>>>> upstream/main
             <Markdown class="mt-2">
                 <Content />
             </Markdown>
         </div>
     </div>
+<<<<<<< HEAD
 </MainGridLayout>
+=======
+</GridLayout>
+>>>>>>> upstream/main
