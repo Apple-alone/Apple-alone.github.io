@@ -1,0 +1,23 @@
+{
+    "title": "Applesaber Blog",
+    "description": "第一次学习git和前端，搭建gh-pages",
+    "type": "project",
+    "startDate": "2023-02-10",
+    "endDate": "",
+    "skills": [
+        "HTML",
+        "JavaScript",
+        "CSS"
+    ],
+    "achievements": [],
+    "links": [
+        {
+            "name": "GitHub Repository",
+            "url": "https://github.com/apple-alone/apple-alone.github.io",
+            "type": "project"
+        }
+    ],
+    "icon": "material-symbols:code",
+    "color": "#7C3AED",
+    "featured": true
+}

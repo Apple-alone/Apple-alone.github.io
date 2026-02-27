@@ -1,0 +1,12 @@
+{
+    "name": "C#",
+    "description": "A modern, object-oriented, and type-safe programming language developed by Microsoft for the .NET platform.",
+    "icon": "mdi:language-csharp",
+    "category": "client",
+    "level": "intermediate",
+    "experience": {
+    "years": 4,
+    "months": 0
+    },
+    "color": "#239120"
+}

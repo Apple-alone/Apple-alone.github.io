@@ -1,0 +1,12 @@
+{
+    "name": "Python",
+    "description": "A high-level, interpreted programming language known for its clear syntax and code readability. Widely used in web development, data science, artificial intelligence, and automation.",
+    "icon": "logos:python",
+    "category": "client",
+    "level": "advanced",
+    "experience": {
+    "years": 7,
+    "months": 0
+    },
+    "color": "#3776AB"
+}
