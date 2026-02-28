@@ -94,7 +94,7 @@ docker compose up
 然后可以喝杯咖啡☕等待部署完毕
 
 看到出现了 `⭐️ ALL PERFECT ⭐️` 表示你的服务器成功正常运行了
-![](https://cdn.jsdelivr.net/gh/Apple-alone/PicGo@main/img/image.png)
+![控制台显示运行成功](https://cdn.jsdelivr.net/gh/Apple-alone/PicGo@main/img/image.png)
 
 然后在浏览器打开 你的局域网IP:ALL.NET端口
 
